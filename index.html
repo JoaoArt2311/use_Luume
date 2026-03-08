@@ -1,128 +1,111 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Use Luume</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Luume</title>
 
-    <!-- Font opcional (pode tirar depois) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
 
-  <body>
-    <!-- TOP NAV -->
-    <header class="topbar">
-      <nav class="nav container">
-        <!-- Logo -->
-        <a class="brand" href="#home" aria-label="Voltar para o início">
-          <!-- Troque src pela sua logo -->
-          <img
-            class="brand-logo"
-            src="assets/logo-use-luume.png"
-            alt="Use Luume"
-          />
-          <span class="brand-name">USE LUUME</span>
-        </a>
+  <!-- Font opcional (pode tirar depois) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+</head>
 
-        <!-- Links -->
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#shop">Loja</a></li>
-          <li><a href="#about">Sobre</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
+<body>
+  <!-- TOP NAV -->
+  <header class="topbar">
+    <nav class="nav container">
+      <!-- Logo -->
+      <a class="brand" href="#home" aria-label="Voltar para o início">
+        <!-- Troque src pela sua logo -->
+        <!-- <img class="brand-logo" src="img/logo-sem-fundo.png" alt="Use Luume" /> -->
+        <span class="brand-name">USE <div class="luume">Luume</div></span>
+      </a>
 
-        <!-- Ações -->
-        <div class="nav-actions">
-          <!-- Botão carrinho -->
-          <button class="cart-btn" id="cartBtn" aria-label="Abrir carrinho">
-            <span class="cart-icon" aria-hidden="true">🛒</span>
-            <span class="cart-badge" id="cartCount">0</span>
-          </button>
-        </div>
-      </nav>
-    </header>
+      <!-- Links -->
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#shop">Loja</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
 
-    <!-- MAIN -->
-    <main id="home">
-      <!-- HERO / CARROSSEL -->
-      <section class="hero container">
-        <div class="carousel" aria-label="Carrossel de produtos em destaque">
-          <button
-            class="carousel-btn prev"
-            id="carouselPrev"
-            aria-label="Imagem anterior"
-          >
-            ‹
-          </button>
+      <!-- Ações -->
+      <!-- <div class="nav-actions">
+        <!-- Botão carrinho -->
+      <!-- <button class="cart-btn" id="cartBtn" aria-label="Abrir carrinho">
+          <span class="cart-icon" aria-hidden="true">🛒</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </div>  -->
 
-          <div class="carousel-track" id="carouselTrack">
-            <!-- Troque as imagens por fotos reais dos seus produtos -->
-            <img
-              src="assets/carousel-1.jpg"
-              alt="Produto em destaque 1"
-              class="carousel-img active"
-            />
-            <img
-              src="assets/carousel-2.jpg"
-              alt="Produto em destaque 2"
-              class="carousel-img"
-            />
-            <img
-              src="assets/carousel-3.jpg"
-              alt="Produto em destaque 3"
-              class="carousel-img"
-            />
-            <img
-              src="assets/carousel-4.jpg"
-              alt="Produto em destaque 4"
-              class="carousel-img"
-            />
-          </div>
+      <div class="nav-actions">
+        <!-- Hamburger (mobile) -->
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
+          <span class="menu-lines" aria-hidden="true"></span>
+        </button>
 
-          <button
-            class="carousel-btn next"
-            id="carouselNext"
-            aria-label="Próxima imagem"
-          >
-            ›
-          </button>
+        <!-- Botão carrinho -->
+        <button class="cart-btn" id="cartBtn" aria-label="Abrir carrinho">
+          <span class="cart-icon" aria-hidden="true">🛒</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu container" id="mobileMenu" aria-hidden="true">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#shop" class="mobile-link">Loja</a>
+      <a href="#about" class="mobile-link">Sobre</a>
+      <a href="#contact" class="mobile-link">Contato</a>
+    </div>
+  </header>
 
-          <div
-            class="carousel-dots"
-            id="carouselDots"
-            aria-label="Indicadores do carrossel"
-          >
-            <!-- dots serão criados pelo JS -->
-          </div>
-        </div>
-      </section>
+  <!-- MAIN -->
+  <main id="home">
+    <!-- HERO / CARROSSEL -->
+    <section class="hero container">
+      <div class="carousel" aria-label="Carrossel de produtos em destaque">
+        <button class="carousel-btn prev" id="carouselPrev" aria-label="Imagem anterior">
+          ‹
+        </button>
 
-      <!-- SHOP -->
-      <section id="shop" class="shop container">
-        <div class="section-head">
-          <h2 class="section-title">Loja</h2>
-          <p class="section-subtitle">
-            Escolha seus favoritos e finalize pelo WhatsApp.
-          </p>
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Troque as imagens por fotos reais dos seus produtos -->
+          <img src="assets/carousel-1.jpg" alt="Produto em destaque 1" class="carousel-img active" />
+          <img src="assets/carousel-2.jpg" alt="Produto em destaque 2" class="carousel-img" />
+          <img src="assets/carousel-3.jpg" alt="Produto em destaque 3" class="carousel-img" />
+          <img src="assets/carousel-4.jpg" alt="Produto em destaque 4" class="carousel-img" />
         </div>
 
-        <div class="shop-layout">
-          <!-- Grid (2 colunas) -->
-          <div
-            class="products-grid"
-            id="productsGrid"
-            aria-label="Lista de produtos"
-          >
-            <!--
+        <button class="carousel-btn next" id="carouselNext" aria-label="Próxima imagem">
+          ›
+        </button>
+
+        <div class="carousel-dots" id="carouselDots" aria-label="Indicadores do carrossel">
+          <!-- dots serão criados pelo JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop" class="shop container">
+      <div class="section-head">
+        <h2 class="section-title">Loja</h2>
+        <p class="section-subtitle">
+          Escolha seus favoritos e finalize pelo WhatsApp.
+        </p>
+      </div>
+
+      <div class="shop-layout">
+        <!-- Grid (2 colunas) -->
+        <div class="products-grid" id="productsGrid" aria-label="Lista de produtos">
+          <!--
             Cards serão renderizados pelo JS.
             Estrutura do card (referência):
 
@@ -137,207 +120,170 @@
                 </div>
               </div>
             </article>
-          --></div>
-
-          <!-- Painel lateral (detalhes do produto) - aba suspensa -->
-          <aside
-            class="product-drawer"
-            id="productDrawer"
-            aria-label="Detalhes do produto"
-            aria-hidden="true"
-          >
-            <div class="drawer-head">
-              <h3 class="drawer-title" id="drawerTitle">Detalhes</h3>
-              <button
-                class="drawer-close"
-                id="drawerClose"
-                aria-label="Fechar detalhes"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div class="drawer-content">
-              <img id="drawerImage" class="drawer-img" src="" alt="" />
-              <p class="drawer-price" id="drawerPrice">R$ 0,00</p>
-              <p class="drawer-desc" id="drawerDesc">
-                Descrição do produto aparecerá aqui.
-              </p>
-
-              <div class="drawer-actions">
-                <button class="btn btn-light" id="drawerAddToCart">
-                  Adicionar ao carrinho
-                </button>
-                <a
-                  class="btn btn-primary"
-                  id="drawerBuyNow"
-                  href="#"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Comprar no WhatsApp
-                </a>
-              </div>
-
-              <small class="drawer-note">
-                * Ao comprar, você será direcionado para o WhatsApp com a
-                mensagem pronta.
-              </small>
-            </div>
-          </aside>
+          -->
         </div>
 
-        <!-- PAGINAÇÃO -->
-        <div class="pagination" aria-label="Paginação de produtos">
-          <button class="page-btn" id="pagePrev" aria-label="Página anterior">
-            Anterior
-          </button>
-
-          <div
-            class="page-numbers"
-            id="pageNumbers"
-            aria-label="Números de páginas"
-          >
-            <!-- números serão criados pelo JS -->
-          </div>
-
-          <button class="page-btn" id="pageNext" aria-label="Próxima página">
-            Próxima
-          </button>
-        </div>
-      </section>
-
-      <!-- CARRINHO (MODAL / SIDE) -->
-      <section
-        class="cart-panel"
-        id="cartPanel"
-        aria-label="Carrinho"
-        aria-hidden="true"
-      >
-        <div class="cart-head">
-          <h3 class="cart-title">Seu carrinho</h3>
-          <button
-            class="cart-close"
-            id="cartClose"
-            aria-label="Fechar carrinho"
-          >
-            ✕
-          </button>
-        </div>
-
-        <div class="cart-body">
-          <div class="cart-items" id="cartItems">
-            <!-- itens renderizados via JS -->
-          </div>
-
-          <div class="cart-summary">
-            <div class="cart-row">
-              <span>Total</span>
-              <strong id="cartTotal">R$ 0,00</strong>
-            </div>
-
-            <a
-              class="btn btn-primary cart-whats"
-              id="cartCheckout"
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Finalizar no WhatsApp
-            </a>
-
-            <button class="btn btn-light" id="cartClear">
-              Limpar carrinho
+        <!-- Painel lateral (detalhes do produto) - aba suspensa -->
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+        <aside class="product-drawer" id="productDrawer" aria-label="Detalhes do produto" aria-hidden="true">
+          <div class="drawer-head">
+            <h3 class="drawer-title" id="drawerTitle">Detalhes</h3>
+            <button class="drawer-close" id="drawerClose" aria-label="Fechar detalhes">
+              ✕
             </button>
           </div>
-        </div>
-      </section>
 
-      <!-- ABOUT -->
-      <section id="about" class="about container">
-        <div class="about-text">
-          <h2 class="section-title">Sobre a Use Luume</h2>
-          <p>
-            A Use Luume nasceu para elevar seu estilo com acessórios que
-            combinam minimalismo, personalidade e presença. Peças selecionadas
-            para quem quer ser lembrada sem precisar exagerar.
-          </p>
-          <p>
-            Aqui você encontra curadoria, qualidade e aquele toque “it girl” do
-            jeito certo: simples, bonito e com cara de marca premium.
-          </p>
+          <div class="drawer-content">
+            <img id="drawerImage" class="drawer-img" src="" alt="" />
+            <p class="drawer-price" id="drawerPrice">R$ 0,00</p>
+            <p class="drawer-desc" id="drawerDesc">
+              Descrição do produto aparecerá aqui.
+            </p>
 
-          <div class="about-highlights">
-            <div class="highlight">✨ Curadoria</div>
-            <div class="highlight">🤍 Minimalista</div>
-            <div class="highlight">📦 Envio rápido</div>
+            <div class="drawer-actions">
+              <button class="btn btn-light" id="drawerAddToCart">
+                Adicionar ao carrinho
+              </button>
+              <a class="btn btn-primary" id="drawerBuyNow" href="#" target="_blank" rel="noopener">
+                Comprar no WhatsApp
+              </a>
+            </div>
+
+            <small class="drawer-note">
+              * Ao comprar, você será direcionado para o WhatsApp com a
+              mensagem pronta.
+            </small>
           </div>
-        </div>
+        </aside>
+      </div>
 
-        <div class="about-media">
-          <!-- imagem ilustrativa -->
-          <img src="assets/about.jpg" alt="Imagem da Use Luume" />
-        </div>
-      </section>
+      <!-- PAGINAÇÃO -->
+      <div class="pagination" aria-label="Paginação de produtos">
+        <button class="page-btn" id="pagePrev" aria-label="Página anterior">
+          Anterior
+        </button>
 
-      <!-- CONTACT -->
-      <section id="contact" class="contact container">
-        <h2 class="section-title">Contato</h2>
-        <p>
-          Quer ajuda pra escolher? Chama no WhatsApp que a gente te atende
-          rapidinho.
-        </p>
-
-        <a
-          class="btn btn-primary"
-          id="contactWhats"
-          href="#"
-          target="_blank"
-          rel="noopener"
-        >
-          Falar no WhatsApp
-        </a>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-inner container">
-        <div class="footer-brand">
-          <img
-            class="footer-logo"
-            src="assets/logo-use-luume.png"
-            alt="Use Luume"
-          />
-          <p class="footer-copy">
-            © <span id="year"></span> Use Luume. Todos os direitos reservados.
-          </p>
+        <div class="page-numbers" id="pageNumbers" aria-label="Números de páginas">
+          <!-- números serão criados pelo JS -->
         </div>
 
-        <div class="footer-cols">
-          <div class="footer-col">
-            <h4>Links</h4>
-            <a href="#home">Home</a>
-            <a href="#shop">Loja</a>
-            <a href="#about">Sobre</a>
+        <button class="page-btn" id="pageNext" aria-label="Próxima página">
+          Próxima
+        </button>
+      </div>
+    </section>
+
+    <!-- CARRINHO (MODAL / SIDE) -->
+    <section class="cart-panel" id="cartPanel" aria-label="Carrinho" aria-hidden="true">
+      <div class="cart-head">
+        <h3 class="cart-title">Seu carrinho</h3>
+        <button class="cart-close" id="cartClose" aria-label="Fechar carrinho">
+          ✕
+        </button>
+      </div>
+
+      <div class="cart-body">
+        <div class="cart-items" id="cartItems">
+          <!-- itens renderizados via JS -->
+        </div>
+
+        <div class="cart-summary">
+          <div class="cart-row">
+            <span>Total</span>
+            <strong id="cartTotal">R$ 0,00</strong>
           </div>
 
-          <div class="footer-col">
-            <h4>Informações</h4>
-            <p>Atendimento via WhatsApp</p>
-            <p>Envios para todo Brasil</p>
-          </div>
+          <a class="btn btn-primary cart-whats" id="cartCheckout" href="#" target="_blank" rel="noopener">
+            Finalizar no WhatsApp
+          </a>
 
-          <div class="footer-col">
-            <h4>Social</h4>
-            <a href="#" aria-label="Instagram">Instagram</a>
-            <a href="#" aria-label="TikTok">TikTok</a>
-          </div>
+          <button class="btn btn-light" id="cartClear">
+            Limpar carrinho
+          </button>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <!-- JS -->
-    <script src="script.js"></script>
-  </body>
+    <!-- ABOUT -->
+    <section id="about" class="about container">
+      <div class="about-text">
+        <h2 class="section-title">Sobre a Use Luume</h2>
+        <p>
+          A Use Luume nasceu para elevar seu estilo com acessórios que
+          combinam minimalismo, personalidade e presença. Peças selecionadas
+          para quem quer ser lembrada sem precisar exagerar.
+        </p>
+        <p>
+          Aqui você encontra curadoria, qualidade e aquele toque “it girl” do
+          jeito certo: simples, bonito e com cara de marca premium.
+        </p>
+
+        <div class="about-highlights">
+          <div class="highlight">✨ Curadoria</div>
+          <div class="highlight">🤍 Minimalista</div>
+          <div class="highlight">📦 Envio rápido</div>
+        </div>
+      </div>
+
+      <div class="about-media">
+        <!-- imagem ilustrativa -->
+        <img src="assets/about.jpg" alt="Imagem da Use Luume" />
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact container">
+      <h2 class="section-title">Contato</h2>
+      <p>
+        Quer ajuda pra escolher? Chama no WhatsApp que a gente te atende
+        rapidinho.
+      </p>
+
+      <a class="btn btn-primary" id="contactWhats" href="#" target="_blank" rel="noopener">
+        Falar no WhatsApp
+      </a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="img/logo-new.png" alt="Logo da Use Luume">
+        </div>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Links</h4>
+          <a href="#home">Home</a>
+          <a href="#shop">Loja</a>
+          <a href="#about">Sobre</a>
+        </div>
+
+        <!-- <div class="footer-col">
+          <h4>Informações</h4>
+          <p>Atendimento via WhatsApp</p>
+          <p>Envios para todo Brasil</p>
+        </div> -->
+
+        <div class="footer-col">
+          <h4>Social</h4>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="TikTok">TikTok</a>
+        </div>
+      </div>
+    </div>
+    <div class="direitos">
+      <p class="footer-copy">
+        © <span id="year"></span> Use Luume. Todos os direitos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+
 </html>

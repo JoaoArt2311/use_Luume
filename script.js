@@ -1,100 +1,29 @@
 // ===============================
 // CONFIG
 // ===============================
-const WHATSAPP_NUMBER = "SEU_NUMERO_AQUI"; // você vai trocar depois
+const WHATSAPP_NUMBER = "SEU_NUMERO_AQUI"; // você troca depois
 const WHATSAPP_BASE = "https://wa.me/";
 const ITEMS_PER_PAGE = 8;
+const CART_STORAGE_KEY = "useLuume_cart_v1";
+const drawerOverlay = document.getElementById("drawerOverlay");
 
 // ===============================
-// MOCK DE PRODUTOS (troque tudo)
+// PRODUTOS (troque tudo depois)
 // ===============================
 const products = [
-  {
-    id: 1,
-    name: "Brinco Dourado Minimal",
-    price: 59.9,
-    img: "assets/p1.jpg",
-    desc: "Brinco minimalista com acabamento premium. Leve, elegante e perfeito para o dia a dia.",
-  },
-  {
-    id: 2,
-    name: "Colar Ponto de Luz",
-    price: 79.9,
-    img: "assets/p2.jpg",
-    desc: "Colar delicado com ponto de luz. Um clássico que combina com tudo.",
-  },
-  {
-    id: 3,
-    name: "Anel Ajustável Slim",
-    price: 49.9,
-    img: "assets/p3.jpg",
-    desc: "Anel ajustável com design slim. Minimalista e fácil de combinar.",
-  },
-  {
-    id: 4,
-    name: "Pulseira Fina Lux",
-    price: 69.9,
-    img: "assets/p4.jpg",
-    desc: "Pulseira fina com brilho discreto e acabamento sofisticado.",
-  },
-  {
-    id: 5,
-    name: "Brinco Argolinha",
-    price: 39.9,
-    img: "assets/p5.jpg",
-    desc: "Argolinha pequena com visual clean. O básico que sempre funciona.",
-  },
-  {
-    id: 6,
-    name: "Colar Camadas",
-    price: 89.9,
-    img: "assets/p6.jpg",
-    desc: "Colar em camadas com presença na medida. It girl sem exagero.",
-  },
-  {
-    id: 7,
-    name: "Anel Detalhe Textura",
-    price: 54.9,
-    img: "assets/p7.jpg",
-    desc: "Textura sutil para elevar o look. Ajuste confortável.",
-  },
-  {
-    id: 8,
-    name: "Pulseira Elo Delicado",
-    price: 64.9,
-    img: "assets/p8.jpg",
-    desc: "Elo delicado, acabamento premium. Perfeita pra usar sozinha ou com mix.",
-  },
+  { id: 1, name: "Brinco Dourado Minimal", price: 59.9, img: "assets/p1.jpg", desc: "Brinco minimalista com acabamento premium. Leve, elegante e perfeito para o dia a dia." },
+  { id: 2, name: "Colar Ponto de Luz", price: 79.9, img: "assets/p2.jpg", desc: "Colar delicado com ponto de luz. Um clássico que combina com tudo." },
+  { id: 3, name: "Anel Ajustável Slim", price: 49.9, img: "assets/p3.jpg", desc: "Anel ajustável com design slim. Minimalista e fácil de combinar." },
+  { id: 4, name: "Pulseira Fina Lux", price: 69.9, img: "assets/p4.jpg", desc: "Pulseira fina com brilho discreto e acabamento sofisticado." },
+  { id: 5, name: "Brinco Argolinha", price: 39.9, img: "assets/p5.jpg", desc: "Argolinha pequena com visual clean. O básico que sempre funciona." },
+  { id: 6, name: "Colar Camadas", price: 89.9, img: "assets/p6.jpg", desc: "Colar em camadas com presença na medida. It girl sem exagero." },
+  { id: 7, name: "Anel Detalhe Textura", price: 54.9, img: "assets/p7.jpg", desc: "Textura sutil para elevar o look. Ajuste confortável." },
+  { id: 8, name: "Pulseira Elo Delicado", price: 64.9, img: "assets/p8.jpg", desc: "Elo delicado, acabamento premium. Perfeita pra usar sozinha ou com mix." },
 
-  // mais pra testar paginação
-  {
-    id: 9,
-    name: "Brinco Pérola Chic",
-    price: 52.9,
-    img: "assets/p9.jpg",
-    desc: "Pérola com estética moderna. Elegante e atual.",
-  },
-  {
-    id: 10,
-    name: "Colar Medalha",
-    price: 74.9,
-    img: "assets/p10.jpg",
-    desc: "Medalha minimalista com brilho suave. Presença sutil.",
-  },
-  {
-    id: 11,
-    name: "Anel Torcido",
-    price: 57.9,
-    img: "assets/p11.jpg",
-    desc: "Design torcido com acabamento clean. Ajustável.",
-  },
-  {
-    id: 12,
-    name: "Pulseira Pedrinha",
-    price: 62.9,
-    img: "assets/p12.jpg",
-    desc: "Pedrinha discreta e sofisticada. Ideal para looks leves.",
-  },
+  { id: 9, name: "Brinco Pérola Chic", price: 52.9, img: "assets/p9.jpg", desc: "Pérola com estética moderna. Elegante e atual." },
+  { id: 10, name: "Colar Medalha", price: 74.9, img: "assets/p10.jpg", desc: "Medalha minimalista com brilho suave. Presença sutil." },
+  { id: 11, name: "Anel Torcido", price: 57.9, img: "assets/p11.jpg", desc: "Design torcido com acabamento clean. Ajustável." },
+  { id: 12, name: "Pulseira Pedrinha", price: 62.9, img: "assets/p12.jpg", desc: "Pedrinha discreta e sofisticada. Ideal para looks leves." },
 ];
 
 // ===============================
@@ -113,12 +42,17 @@ function getWhatsLink(message) {
   return `${WHATSAPP_BASE}${number}?text=${encodeMsg(message)}`;
 }
 
+function calcCartTotals(items) {
+  const totalItems = items.reduce((acc, i) => acc + i.qty, 0);
+  const totalValue = items.reduce((acc, i) => acc + (i.price * i.qty), 0);
+  return { totalItems, totalValue };
+}
+
 function buildCartMessage(items) {
-  // mensagem com produtos + total
   let lines = ["Olá! Quero comprar os seguintes itens da Use Luume:", ""];
   let total = 0;
 
-  items.forEach((item) => {
+  items.forEach(item => {
     const subtotal = item.price * item.qty;
     total += subtotal;
     lines.push(`• ${item.name} (x${item.qty}) - ${formatBRL(subtotal)}`);
@@ -130,6 +64,33 @@ function buildCartMessage(items) {
   lines.push("Pode confirmar disponibilidade e formas de pagamento?");
 
   return lines.join("\n");
+}
+
+function safeParseJSON(str, fallback) {
+  try { return JSON.parse(str); } catch { return fallback; }
+}
+
+// ===============================
+// STORAGE
+// ===============================
+function loadCart() {
+  const raw = localStorage.getItem(CART_STORAGE_KEY);
+  const parsed = safeParseJSON(raw, []);
+  // validação mínima
+  if (!Array.isArray(parsed)) return [];
+  return parsed
+    .filter(x => x && typeof x.id === "number" && typeof x.qty === "number")
+    .map(x => {
+      // garante que name/price estejam corretos mesmo se mudar catálogo
+      const p = products.find(pp => pp.id === x.id);
+      if (!p) return null;
+      return { id: p.id, name: p.name, price: p.price, qty: Math.max(1, Math.floor(x.qty)) };
+    })
+    .filter(Boolean);
+}
+
+function saveCart() {
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
 }
 
 // ===============================
@@ -162,6 +123,10 @@ const pageNumbers = document.getElementById("pageNumbers");
 
 const contactWhats = document.getElementById("contactWhats");
 
+// Mobile menu
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
 // Carousel
 const carouselImgs = Array.from(document.querySelectorAll(".carousel-img"));
 const carouselPrev = document.getElementById("carouselPrev");
@@ -171,9 +136,8 @@ const carouselDots = document.getElementById("carouselDots");
 // ===============================
 // STATE
 // ===============================
-let cart = []; // {id, name, price, qty}
+let cart = [];
 let currentPage = 1;
-
 let drawerSelectedProduct = null;
 
 let carouselIndex = 0;
@@ -186,11 +150,12 @@ function init() {
   // ano no footer
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // link contato whatsapp (mensagem simples)
+  // carrinho persistente
+  cart = loadCart();
+
+  // link contato whatsapp
   if (contactWhats) {
-    contactWhats.href = getWhatsLink(
-      "Olá! Vim pelo site da Use Luume e gostaria de atendimento 🙂",
-    );
+    contactWhats.href = getWhatsLink("Olá! Vim pelo site da Use Luume e gostaria de atendimento 🙂");
   }
 
   renderPagination();
@@ -208,15 +173,40 @@ function bindEvents() {
   cartBtn.addEventListener("click", () => toggleCart(true));
   cartClose.addEventListener("click", () => toggleCart(false));
 
-  // fechar carrinho clicando fora (simples)
+  // menu mobile
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // ao clicar no link, fecha
+    mobileMenu.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      mobileMenu.classList.remove("open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  // fechar carrinho clicando fora + ESC
   document.addEventListener("click", (e) => {
-    const clickedInsideCart =
-      cartPanel.contains(e.target) || cartBtn.contains(e.target);
-    const clickedInsideDrawer = productDrawer.contains(e.target);
-    if (!clickedInsideCart && cartPanel.classList.contains("open"))
-      toggleCart(false);
-    // drawer fecha só pelo X (pra não irritar)
-    // if (!clickedInsideDrawer && productDrawer.classList.contains("open")) closeDrawer();
+    const clickedInsideCart = cartPanel.contains(e.target) || cartBtn.contains(e.target);
+    if (!clickedInsideCart && cartPanel.classList.contains("open")) toggleCart(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (cartPanel.classList.contains("open")) toggleCart(false);
+      if (productDrawer.classList.contains("open")) closeDrawer();
+      if (mobileMenu?.classList.contains("open")) {
+        mobileMenu.classList.remove("open");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        menuBtn?.setAttribute("aria-expanded", "false");
+      }
+    }
   });
 
   // paginação
@@ -242,6 +232,7 @@ function bindEvents() {
   // limpar carrinho
   cartClear.addEventListener("click", () => {
     cart = [];
+    saveCart();
     renderCart();
   });
 
@@ -256,11 +247,9 @@ function bindEvents() {
 function renderPagination() {
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
 
-  // prev/next disabled
   pagePrev.disabled = currentPage === 1;
   pageNext.disabled = currentPage === totalPages || totalPages === 0;
 
-  // numbers
   pageNumbers.innerHTML = "";
 
   for (let i = 1; i <= totalPages; i++) {
@@ -284,7 +273,7 @@ function renderProducts() {
   const end = start + ITEMS_PER_PAGE;
   const pageItems = products.slice(start, end);
 
-  pageItems.forEach((p) => {
+  pageItems.forEach(p => {
     const card = document.createElement("article");
     card.className = "product-card";
     card.dataset.id = String(p.id);
@@ -321,7 +310,7 @@ function renderProducts() {
 // ===============================
 // DRAWER
 // ===============================
-function openDrawer(product) {
+function openDrawer(product){
   drawerSelectedProduct = product;
 
   drawerTitle.textContent = product.name;
@@ -330,26 +319,32 @@ function openDrawer(product) {
   drawerPrice.textContent = formatBRL(product.price);
   drawerDesc.textContent = product.desc;
 
-  // Add to cart
   drawerAddToCart.onclick = () => {
     addToCart(product.id);
     toggleCart(true);
   };
 
-  // Buy now (1 item)
   const msg = buildCartMessage([
-    { id: product.id, name: product.name, price: product.price, qty: 1 },
+    { id: product.id, name: product.name, price: product.price, qty: 1 }
   ]);
   drawerBuyNow.href = getWhatsLink(msg);
 
   productDrawer.classList.add("open");
   productDrawer.setAttribute("aria-hidden", "false");
+
+  drawerOverlay.classList.add("open");
+
+  document.body.style.overflow = "hidden";
 }
 
-function closeDrawer() {
+function closeDrawer(){
   productDrawer.classList.remove("open");
   productDrawer.setAttribute("aria-hidden", "true");
+
+  drawerOverlay.classList.remove("open");
+
   drawerSelectedProduct = null;
+  document.body.style.overflow = "";
 }
 
 // ===============================
@@ -366,30 +361,27 @@ function toggleCart(open) {
 }
 
 function addToCart(productId) {
-  const product = products.find((p) => p.id === productId);
+  const product = products.find(p => p.id === productId);
   if (!product) return;
 
-  const existing = cart.find((i) => i.id === productId);
+  const existing = cart.find(i => i.id === productId);
   if (existing) {
     existing.qty += 1;
   } else {
-    cart.push({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      qty: 1,
-    });
+    cart.push({ id: product.id, name: product.name, price: product.price, qty: 1 });
   }
+  saveCart();
   renderCart();
 }
 
 function removeFromCart(productId) {
-  cart = cart.filter((i) => i.id !== productId);
+  cart = cart.filter(i => i.id !== productId);
+  saveCart();
   renderCart();
 }
 
 function changeQty(productId, delta) {
-  const item = cart.find((i) => i.id === productId);
+  const item = cart.find(i => i.id === productId);
   if (!item) return;
 
   item.qty += delta;
@@ -397,15 +389,14 @@ function changeQty(productId, delta) {
     removeFromCart(productId);
     return;
   }
+  saveCart();
   renderCart();
 }
 
 function renderCart() {
-  // count
-  const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
+  const { totalItems, totalValue } = calcCartTotals(cart);
   cartCount.textContent = String(totalItems);
 
-  // items
   cartItemsEl.innerHTML = "";
 
   if (cart.length === 0) {
@@ -415,7 +406,7 @@ function renderCart() {
     return;
   }
 
-  cart.forEach((item) => {
+  cart.forEach(item => {
     const row = document.createElement("div");
     row.className = "cart-item";
 
@@ -429,28 +420,24 @@ function renderCart() {
         <button class="qty-btn" aria-label="Diminuir">−</button>
         <span class="qty">${item.qty}</span>
         <button class="qty-btn" aria-label="Aumentar">+</button>
+        <button class="remove-btn" aria-label="Remover item">✕</button>
       </div>
     `;
 
-    const [minusBtn, , plusBtn] = row.querySelectorAll(
-      ".qty-btn, .qty, .qty-btn",
-    );
-    // acima é meio "criativo" demais; vamos pegar direito:
-    const btns = row.querySelectorAll(".qty-btn");
+    const btns = row.querySelectorAll("button");
     const minus = btns[0];
     const plus = btns[1];
+    const remove = btns[2];
 
     minus.addEventListener("click", () => changeQty(item.id, -1));
     plus.addEventListener("click", () => changeQty(item.id, +1));
+    remove.addEventListener("click", () => removeFromCart(item.id));
 
     cartItemsEl.appendChild(row);
   });
 
-  // total
-  const total = cart.reduce((acc, i) => acc + i.price * i.qty, 0);
-  cartTotalEl.textContent = formatBRL(total);
+  cartTotalEl.textContent = formatBRL(totalValue);
 
-  // whatsapp
   const msg = buildCartMessage(cart);
   cartCheckout.href = getWhatsLink(msg);
 }
@@ -461,7 +448,6 @@ function renderCart() {
 function initCarousel() {
   if (!carouselImgs.length) return;
 
-  // create dots
   carouselDots.innerHTML = "";
   carouselImgs.forEach((_, idx) => {
     const d = document.createElement("button");
@@ -473,10 +459,8 @@ function initCarousel() {
 
   setCarousel(0);
 
-  // autoplay
   carouselTimer = setInterval(() => goCarousel(1), 4500);
 
-  // pause on hover (desktop)
   const track = document.getElementById("carouselTrack");
   if (track) {
     track.addEventListener("mouseenter", () => {
@@ -484,15 +468,13 @@ function initCarousel() {
       carouselTimer = null;
     });
     track.addEventListener("mouseleave", () => {
-      if (!carouselTimer)
-        carouselTimer = setInterval(() => goCarousel(1), 4500);
+      if (!carouselTimer) carouselTimer = setInterval(() => goCarousel(1), 4500);
     });
   }
 }
 
 function goCarousel(dir) {
-  const next =
-    (carouselIndex + dir + carouselImgs.length) % carouselImgs.length;
+  const next = (carouselIndex + dir + carouselImgs.length) % carouselImgs.length;
   setCarousel(next);
 }
 
