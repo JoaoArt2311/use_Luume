@@ -1,14 +1,14 @@
 // ===============================
 // CONFIG
 // ===============================
-const WHATSAPP_NUMBER = "SEU_NUMERO_AQUI"; // você troca depois
+const WHATSAPP_NUMBER = "556492020713";
 const WHATSAPP_BASE = "https://wa.me/";
 const ITEMS_PER_PAGE = 8;
 const CART_STORAGE_KEY = "useLuume_cart_v1";
 const drawerOverlay = document.getElementById("drawerOverlay");
 
 // ===============================
-// PRODUTOS (troque tudo depois)
+// PRODUTOS
 // ===============================
 const products = [
   { id: 1, name: "Brinco Dourado Minimal", price: 59.9, img: "assets/p1.jpg", desc: "Brinco minimalista com acabamento premium. Leve, elegante e perfeito para o dia a dia." },
