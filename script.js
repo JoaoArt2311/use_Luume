@@ -55,7 +55,7 @@ const products = [
     price: 85,
     images: [
       "img/produtos/produto-5[1].jpeg",
-      "img/produtos/produto-5[2].jpeg",
+      // "img/produtos/produto-5[2].jpeg",
     ],
     desc: "Colar tendência icônica, sofisticado e elegante. Prata 925",
   },
