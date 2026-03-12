@@ -15,56 +15,77 @@ const products = [
     id: 1,
     name: "Pulseira de Borboleta Cravejada",
     price: 70,
-    img: "img/produtos/produto-1.jpeg",
+    images: [
+      "img/produtos/produto-1.jpeg",
+    ],
     desc: "Pulseira delicada, que traz brilho sutil para o seu dia a dia. Prata 925",
   },
   {
     id: 2,
     name: "Pulseira Corações",
     price: 80,
-    img: "img/produtos/produto-2.jpeg",
+    images: [
+      "img/produtos/produto-2.jpeg",
+    ],
     desc: "Pulseira design elegante, que une brilho e delicadeza. Prata 925",
   },
   {
     id: 3,
     name: "Pulseira Fio Baiano",
     price: 62,
-    img: "img/produtos/produto-3[1].jpeg",
+    images: [
+      "img/produtos/produto-3[1].jpeg",
+      "img/produtos/produto-3[2].jpeg",
+    ],
     desc: "Pulseira com design sofisticado e torção marcante. Prata 925",
   },
   {
     id: 4,
     name: "Pulseira Corações Vazados",
     price: 45,
-    img: "img/produtos/produto-4[1].jpeg",
+    images: [
+      "img/produtos/produto-4[1].jpeg",
+      "img/produtos/produto-4[2].jpeg"
+    ],
     desc: "Pulseira romântica, delicada e elegante. Prata 925",
   },
   {
     id: 5,
     name: "Colar Trevo Cravejado",
     price: 85,
-    img: "img/produtos/produto-5[1].jpeg",
+    images: [
+      "img/produtos/produto-5[1].jpeg",
+      "img/produtos/produto-5[2].jpeg",
+    ],
     desc: "Colar tendência icônica, sofisticado e elegante. Prata 925",
   },
   {
     id: 6,
     name: "Colar Corações Vazados",
     price: 75,
-    img: "img/produtos/produto-6[1].jpeg",
+    images: [
+      "img/produtos/produto-6[1].jpeg",
+      "img/produtos/produto-6[2].jpeg",
+    ],
     desc: "Colar Romântico, Delicado e Excepcional para o seu ia a dia. Prata 925",
   },
   {
     id: 7,
     name: "Colar Coração Cravejado",
     price: 120,
-    img: "img/produtos/produto-7[1].jpeg",
+    images: [
+      "img/produtos/produto-7[1].jpeg",
+      "img/produtos/produto-7[2].jpeg",
+    ],
     desc: "Colar cravejado, marcante, estiloso e romântico. Prata 925",
   },
   {
     id: 8,
     name: "Colar Borboleta Origame",
     price: 80,
-    img: "img/produtos/produto-8.jpeg",
+    images: [
+      "img/produtos/produto-8.jpeg",
+    ],
     desc: "Colar design autêntico, que se destaca por sua elegância. Prata 925",
   },
 
@@ -72,43 +93,210 @@ const products = [
     id: 9,
     name: "Colar Coração Linhas Cravejadas",
     price: 85,
-    img: "img/produtos/produto-9[1].jpeg",
+    images: [
+      "img/produtos/produto-9[1].jpeg",
+      "img/produtos/produto-9[2].jpeg",
+    ],
     desc: "Colar design geométrico, moderno e marcante. Prata 925",
   },
   {
     id: 10,
     name: "Brinco Coração Médio",
     price: 48,
-    img: "img/produtos/produto-10[1].jpeg",
+    images: [
+      "img/produtos/produto-10[1].jpeg",
+      "img/produtos/produto-10[2].jpeg",
+    ],
     desc: "Brinco delicado, torção marcante, tamanho ideal para impactar. Prata 925",
   },
   {
     id: 11,
     name: "Brinco Coração",
     price: 32,
-    img: "img/produtos/produto-11.jpeg",
+    images: [
+      "img/produtos/produto-11.jpeg",
+    ],
     desc: "Brinco delicado, torção marcante, tamanho ideal para o dia a dia. Prata 925",
   },
   {
     id: 12,
     name: "Brinco Argola Pequena",
     price: 30,
-    img: "img/produtos/produto-12.jpeg",
+    images: [
+      "img/produtos/produto-12.jpeg",
+    ],
     desc: "Brinco usual, delicado. Prata 925",
   },
   {
     id: 13,
     name: "Brinco Argola Média",
     price: 40,
-    img: "img/produtos/produto-13.jpeg",
+    images: [
+      "img/produtos/produto-13.jpeg",
+    ],
     desc: "Brinco usual, delicado. Prata 925",
   },
   {
     id: 14,
     name: "Brinco Argola Grande",
     price: 45,
-    img: "img/produtos/produto-14.jpeg",
+    images: [
+      "img/produtos/produto-14.jpeg",
+    ],
     desc: "Brinco usual, delicado. Prata 925",
+  },
+  {
+    id: 15,
+    name: "Brinco Trio",
+    price: 45,
+    images: [
+      "img/produtos/produto-15.jpeg",
+    ],
+    desc: "3 brincos delicados para o dia a dia. Prata 925",
+  },
+  {
+    id: 16,
+    name: "Brinco Trio Strass",
+    price: 60,
+    images: [
+      "img/produtos/produto-16.jpeg",
+    ],
+    desc: "3 brincos elegantes, e delicados. Prata 925",
+  },
+  {
+    id: 17,
+    name: "Brinco Coração Vermelho ",
+    price: 25,
+    images: [
+      "img/produtos/produto-17.jpeg",
+    ],
+    desc: "Brinco moderno e romântico. Prata 925",
+  },
+  {
+    id: 18,
+    name: "Brinco Coração Rosa",
+    price: 25,
+    images: [
+      "img/produtos/produto-18.jpeg",
+    ],
+    desc: "Brinco delicado e romântico. Prata 925",
+  },
+  {
+    id: 19,
+    name: "Brinco Coração Ponto de Luz",
+    price: 25,
+    images: [
+      "img/produtos/produto-19.jpeg",
+    ],
+    desc: "Brinco delicado e romântico. Prata 925",
+  },
+  {
+    id: 20,
+    name: "Brinco Zircônia Quadrado 3mm",
+    price: 25,
+    images: [
+      "img/produtos/produto-20.jpeg",
+    ],
+    desc: "Brinco ponto de luz, minimalista. Prata 925",
+  },
+  {
+    id: 21,
+    name: "Brinco Zircônia Redondo 4mm",
+    price: 28,
+    images: [
+      "img/produtos/produto-21.jpeg",
+    ],
+    desc: "Brinco delicado, perfeito para o dia a dia. Prata 925",
+  },
+  {
+    id: 22,
+    name: "Brinco Zircônia Quadrado 4mm ",
+    price: 28,
+    images: [
+      "img/produtos/produto-22[1].jpeg",
+      "img/produtos/produto-22[2].jpeg",
+    ],
+    desc: "Brinco ponto de luz, elegante. Prata 925",
+  },
+  {
+    id: 23,
+    name: "Brinco Zircônia Redondo 6mm",
+    price: 32,
+    images: [
+      "img/produtos/produto-23[1].jpeg",
+      "img/produtos/produto-23[2].jpeg",
+    ],
+    desc: "Brinco ponto de luz, elegante. Prata 925",
+  },
+  {
+    id: 24,
+    name: "Brinco Mini Coração",
+    price: 20,
+    images: [
+      "img/produtos/produto-24[1].jpeg",
+      "img/produtos/produto-24[2].jpeg",
+    ],
+    desc: "Brinco delicado e romântico. Prata 925",
+  },
+  {
+    id: 25,
+    name: "Piercing Hélix Cravejado",
+    price: 28,
+    images: [
+      "img/produtos/produto-25[1].jpeg",
+      "img/produtos/produto-25[2].jpeg",
+    ],
+    desc: "Piercing delicado e luxuoso. Prata 925",
+  },
+  {
+    id: 26,
+    name: "Piercing Fake Estrelas",
+    price: 25,
+    images: [
+      "img/produtos/produto-26[1].jpeg",
+      "img/produtos/produto-26[2].jpeg",
+    ],
+    desc: "Piercing delicado e luxuoso. Prata 925",
+  },
+  {
+    id: 27,
+    name: "Colar Coração Azul",
+    price: 85,
+    images: [
+      "img/produtos/produto-27[1].jpeg",
+      "img/produtos/produto-27[2].jpeg",
+    ],
+    desc: "Colar delicado e luxuoso. Prata 925",
+  },
+  {
+    id: 28,
+    name: "Colar coração roxo",
+    price: 85,
+    images: [
+      "img/produtos/produto-28[1].jpeg",
+      "img/produtos/produto-28[2].jpeg",
+    ],
+    desc: "Colar delicado e luxuoso. Prata 925",
+  },
+  {
+    id: 29,
+    name: "Colar Coração Roxo",
+    price: 85,
+    images: [
+      "img/produtos/produto-29[1].jpeg",
+      "img/produtos/produto-29[2].jpeg",
+    ],
+    desc: "Colar delicado e luxuoso. Prata 925",
+  },
+  {
+    id: 30,
+    name: "Colar Ponto de Luz",
+    price: 85,
+    images: [
+      "img/produtos/produto-30[1].jpeg",
+      "img/produtos/produto-30[2].jpeg",
+    ],
+    desc: "Colar delicado e luxuoso. Prata 925",
   },
 ];
 
@@ -202,6 +390,9 @@ const drawerPrice = document.getElementById("drawerPrice");
 const drawerDesc = document.getElementById("drawerDesc");
 const drawerAddToCart = document.getElementById("drawerAddToCart");
 const drawerBuyNow = document.getElementById("drawerBuyNow");
+const drawerPrev = document.getElementById("drawerPrev");
+const drawerNext = document.getElementById("drawerNext");
+const drawerThumbs = document.getElementById("drawerThumbs");
 
 const cartBtn = document.getElementById("cartBtn");
 const cartPanel = document.getElementById("cartPanel");
@@ -234,6 +425,7 @@ const carouselDots = document.getElementById("carouselDots");
 let cart = [];
 let currentPage = 1;
 let drawerSelectedProduct = null;
+let drawerImageIndex = 0;
 
 let carouselIndex = 0;
 let carouselTimer = null;
@@ -269,6 +461,20 @@ function bindEvents() {
   // carrinho abrir/fechar
   cartBtn.addEventListener("click", () => toggleCart(true));
   cartClose.addEventListener("click", () => toggleCart(false));
+
+  drawerPrev.addEventListener("click", () => {
+    if (!drawerSelectedProduct?.images?.length) return;
+    const total = drawerSelectedProduct.images.length;
+    drawerImageIndex = (drawerImageIndex - 1 + total) % total;
+    updateDrawerImage();
+  });
+
+  drawerNext.addEventListener("click", () => {
+    if (!drawerSelectedProduct?.images?.length) return;
+    const total = drawerSelectedProduct.images.length;
+    drawerImageIndex = (drawerImageIndex + 1) % total;
+    updateDrawerImage();
+  });
 
   // menu mobile
   if (menuBtn && mobileMenu) {
@@ -378,7 +584,7 @@ function renderProducts() {
     card.dataset.id = String(p.id);
 
     card.innerHTML = `
-      <img class="product-img" src="${p.img}" alt="${p.name}" />
+      <img class="product-img" src="${p.images[0]}" alt="${p.name}" />
       <div class="product-body">
         <h3 class="product-name">${p.name}</h3>
         <p class="product-price">${formatBRL(p.price)}</p>
@@ -411,12 +617,13 @@ function renderProducts() {
 // ===============================
 function openDrawer(product) {
   drawerSelectedProduct = product;
+  drawerImageIndex = 0;
 
   drawerTitle.textContent = product.name;
-  drawerImage.src = product.img;
-  drawerImage.alt = product.name;
   drawerPrice.textContent = formatBRL(product.price);
   drawerDesc.textContent = product.desc;
+
+  updateDrawerImage();
 
   drawerAddToCart.onclick = () => {
     addToCart(product.id);
@@ -424,16 +631,42 @@ function openDrawer(product) {
   };
 
   const msg = buildCartMessage([
-    { id: product.id, name: product.name, price: product.price, qty: 1 },
+    { id: product.id, name: product.name, price: product.price, qty: 1 }
   ]);
   drawerBuyNow.href = getWhatsLink(msg);
 
   productDrawer.classList.add("open");
   productDrawer.setAttribute("aria-hidden", "false");
 
-  drawerOverlay.classList.add("open");
+  if (typeof drawerOverlay !== "undefined" && drawerOverlay) {
+    drawerOverlay.classList.add("open");
+  }
 
   document.body.style.overflow = "hidden";
+}
+
+function updateDrawerImage() {
+  if (!drawerSelectedProduct) return;
+
+  const images = drawerSelectedProduct.images || [];
+  if (!images.length) return;
+
+  drawerImage.src = images[drawerImageIndex];
+  drawerImage.alt = `${drawerSelectedProduct.name} - imagem ${drawerImageIndex + 1}`;
+
+  drawerThumbs.innerHTML = "";
+
+  images.forEach((img, index) => {
+    const thumb = document.createElement("img");
+    thumb.src = img;
+    thumb.alt = `${drawerSelectedProduct.name} miniatura ${index + 1}`;
+    thumb.className = "drawer-thumb" + (index === drawerImageIndex ? " active" : "");
+    thumb.addEventListener("click", () => {
+      drawerImageIndex = index;
+      updateDrawerImage();
+    });
+    drawerThumbs.appendChild(thumb);
+  });
 }
 
 function closeDrawer() {

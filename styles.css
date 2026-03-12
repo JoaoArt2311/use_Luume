@@ -585,6 +585,63 @@ button {
   display: block;
 }
 
+.drawer-gallery{
+  position: relative;
+}
+
+.drawer-img{
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.drawer-gallery-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer-gallery-btn.prev{
+  left: 8px;
+}
+
+.drawer-gallery-btn.next{
+  right: 8px;
+}
+
+.drawer-thumbs{
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.drawer-thumb{
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  opacity: .7;
+}
+
+.drawer-thumb.active{
+  opacity: 1;
+  border: 2px solid var(--text);
+}
+
 /* Pagination */
 .pagination {
   display: flex;
