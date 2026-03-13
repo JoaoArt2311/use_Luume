@@ -233,8 +233,8 @@ const products = [
   },
   {
     id: 24,
-    name: "Brinco Mini Coração",
-    price: 20,
+    name: "Brinco Zirconia Redondo 6mm",
+    price: 32,
     images: [
       "img/produtos/produto-24[1].jpeg",
       "img/produtos/produto-24[2].jpeg",
@@ -243,8 +243,8 @@ const products = [
   },
   {
     id: 25,
-    name: "Piercing Hélix Cravejado",
-    price: 28,
+    name: "Brinco Mini Coração",
+    price: 20,
     images: [
       "img/produtos/produto-25[1].jpeg",
       "img/produtos/produto-25[2].jpeg",
@@ -253,8 +253,8 @@ const products = [
   },
   {
     id: 26,
-    name: "Piercing Fake Estrelas",
-    price: 25,
+    name: "Piercing Helix Cravejado",
+    price: 28,
     images: [
       "img/produtos/produto-26[1].jpeg",
       "img/produtos/produto-26[2].jpeg",
@@ -263,8 +263,8 @@ const products = [
   },
   {
     id: 27,
-    name: "Colar Coração Azul",
-    price: 85,
+    name: "Piercing Fake Estrelas",
+    price: 25,
     images: [
       "img/produtos/produto-27[1].jpeg",
       "img/produtos/produto-27[2].jpeg",
@@ -273,7 +273,7 @@ const products = [
   },
   {
     id: 28,
-    name: "Colar coração roxo",
+    name: "Colar Coração Azul",
     price: 85,
     images: [
       "img/produtos/produto-28[1].jpeg",
