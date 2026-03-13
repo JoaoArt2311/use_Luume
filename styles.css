@@ -44,6 +44,18 @@ button {
   font-family: inherit;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+button span,
+a,
+a span {
+  color: inherit;
+}
+
 @font-face {
   font-family: "Luume";
   src: url(fonts/Tempting\ -\ PERSONAL\ USE\ ONLY.ttf);
@@ -213,6 +225,9 @@ button {
   border-radius: 999px;
   cursor: pointer;
   transition: 0.2s ease;
+  color: var(--text) !important;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .cart-btn:hover {
   transform: translateY(-1px);
@@ -220,6 +235,7 @@ button {
 }
 .cart-icon {
   font-size: 18px;
+  color: var(--text) !important;
 }
 .cart-badge {
   position: absolute;
@@ -236,8 +252,8 @@ button {
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
+  color: var(--text) !important;
 }
-
 /* Hero / Carousel */
 .hero {
   padding: 22px 0 10px;
@@ -290,6 +306,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text) !important;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .carousel-btn:hover {
   box-shadow: var(--shadow);
@@ -410,8 +429,8 @@ button {
   font-weight: 600;
   transition: 0.2s ease;
   user-select: none;
-  color: var(--text);
-  text-decoration: none;
+  color: var(--text) !important;
+  text-decoration: none !important;
   -webkit-appearance: none;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
@@ -419,7 +438,7 @@ button {
 
 .btn-primary {
   background: var(--bg-2);
-  color: var(--text);
+  color: var(--text) !important;
 }
 
 .btn-primary:hover {
@@ -427,11 +446,15 @@ button {
   box-shadow: var(--shadow);
 }
 
-.btn-light {
-  background: rgba(255, 255, 255, 0.55);
-  color: var(--text);
+.btn-primary {
+  background: var(--bg-2);
+  color: var(--text) !important;
 }
 
+.btn-light {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--text) !important;
+}
 .btn-light:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow);
@@ -441,8 +464,8 @@ button {
 .btn:hover,
 .btn:active,
 .btn:focus {
-  color: var(--text);
-  text-decoration: none;
+  color: var(--text) !important;
+  text-decoration: none !important;
 }
 /* Drawer (Product details) */
 /* .product-drawer{
@@ -613,7 +636,7 @@ button {
   border: 1px solid var(--border);
 }
 
-.drawer-gallery-btn{
+.drawer-gallery-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -626,6 +649,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text) !important;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .drawer-gallery-btn.prev{
