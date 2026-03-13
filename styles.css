@@ -946,6 +946,7 @@ a span {
 
 /* Footer */
 .footer {
+  padding: 25px;
   margin-top: 30px;
   border-top: 1px solid var(--border);
   background: rgba(255, 244, 238, 0.86);
@@ -993,7 +994,7 @@ a span {
   display: flex;
   justify-content: center;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 25px;
   color: #30003A;
 }
 
