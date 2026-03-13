@@ -695,7 +695,7 @@ button {
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255);
   box-shadow: var(--shadow);
   display: none;
   z-index: 100;
@@ -939,6 +939,15 @@ button {
   margin: 6px 0;
   color: var(--muted);
   font-size: 13px;
+}
+
+.dev a{
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #30003A;
 }
 
 /* Responsive */

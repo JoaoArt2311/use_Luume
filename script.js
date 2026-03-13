@@ -28,6 +28,7 @@ const products = [
       "img/produtos/produto-2.jpeg",
     ],
     desc: "Pulseira design elegante, que une brilho e delicadeza. Prata 925",
+    imagePosition: "center 80%"
   },
   {
     id: 3,
@@ -54,6 +55,7 @@ const products = [
     name: "Colar Trevo Cravejado",
     price: 85,
     images: [
+      "img/produto-esgotado.png",
       "img/produtos/produto-5[1].jpeg",
       // "img/produtos/produto-5[2].jpeg",
     ],
@@ -104,6 +106,7 @@ const products = [
     name: "Brinco Coração Médio",
     price: 48,
     images: [
+      "img/produto-esgotado.png",
       "img/produtos/produto-10[1].jpeg",
       "img/produtos/produto-10[2].jpeg",
     ],
@@ -645,14 +648,20 @@ function openDrawer(product) {
   document.body.style.overflow = "hidden";
 }
 
-function updateDrawerImage() {
+function updateDrawerImage(){
   if (!drawerSelectedProduct) return;
 
   const images = drawerSelectedProduct.images || [];
-  if (!images.length) return;
+  if (!images.length){
+    drawerImage.src = "assets/p1.jpg";
+    drawerImage.alt = drawerSelectedProduct.name;
+    drawerThumbs.innerHTML = "";
+    return;
+  }
 
   drawerImage.src = images[drawerImageIndex];
   drawerImage.alt = `${drawerSelectedProduct.name} - imagem ${drawerImageIndex + 1}`;
+  drawerImage.style.objectPosition = drawerSelectedProduct.imagePosition || "center center";
 
   drawerThumbs.innerHTML = "";
 
