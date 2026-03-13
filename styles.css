@@ -290,12 +290,17 @@ a span {
   transform: scale(1);
 }
 
+.carousel-track,
+.drawer-img {
+  touch-action: pan-y;
+}
+
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
+  width: 30px;
+  height: 30px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.6);
@@ -640,8 +645,8 @@ a span {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 34px;
-  height: 34px;
+  width: 25px;
+  height: 25px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: rgba(255,255,255,.9);

@@ -351,6 +351,19 @@ function safeParseJSON(str, fallback) {
   }
 }
 
+function handleSwipe(startX, endX, onSwipeLeft, onSwipeRight) {
+  const diff = startX - endX;
+  const minSwipeDistance = 50;
+
+  if (Math.abs(diff) < minSwipeDistance) return;
+
+  if (diff > 0) {
+    onSwipeLeft();
+  } else {
+    onSwipeRight();
+  }
+}
+
 // ===============================
 // STORAGE
 // ===============================
@@ -433,6 +446,11 @@ let drawerImageIndex = 0;
 let carouselIndex = 0;
 let carouselTimer = null;
 
+let touchStartX = 0;
+let touchEndX = 0;
+
+let drawerTouchStartX = 0;
+let drawerTouchEndX = 0;
 // ===============================
 // INIT
 // ===============================
@@ -536,6 +554,58 @@ function bindEvents() {
       window.location.hash = "#shop";
     }
   });
+
+  const carouselTrackEl = document.getElementById("carouselTrack");
+
+if (carouselTrackEl) {
+  carouselTrackEl.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  carouselTrackEl.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+
+handleSwipe(
+  touchStartX,
+  touchEndX,
+  () => {
+    goCarousel(1);
+    if (typeof restartCarouselAuto === "function") restartCarouselAuto();
+  },
+  () => {
+    goCarousel(-1);
+    if (typeof restartCarouselAuto === "function") restartCarouselAuto();
+  }
+);
+  }, { passive: true });
+}
+
+if (drawerImage) {
+  drawerImage.addEventListener("touchstart", (e) => {
+    drawerTouchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  drawerImage.addEventListener("touchend", (e) => {
+    drawerTouchEndX = e.changedTouches[0].screenX;
+
+    if (!drawerSelectedProduct?.images?.length) return;
+
+    handleSwipe(
+      drawerTouchStartX,
+      drawerTouchEndX,
+      () => {
+        const total = drawerSelectedProduct.images.length;
+        drawerImageIndex = (drawerImageIndex + 1) % total;
+        updateDrawerImage();
+      },
+      () => {
+        const total = drawerSelectedProduct.images.length;
+        drawerImageIndex = (drawerImageIndex - 1 + total) % total;
+        updateDrawerImage();
+      }
+    );
+  }, { passive: true });
+}
 
   // limpar carrinho
   cartClear.addEventListener("click", () => {
