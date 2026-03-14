@@ -745,10 +745,26 @@ function openDrawer(product) {
     };
   }
 
+if (product.stock === false) {
+
+  drawerBuyNow.textContent = "Consultar previsão";
+
+  const msg = `Olá! Tenho interesse no produto "${product.name}", mas vi no site que ele está esgotado. Poderia me informar a previsão de chegada?`;
+
+  drawerBuyNow.href = getWhatsLink(msg);
+
+} else {
+
+  drawerBuyNow.textContent = "Comprar no WhatsApp";
+
   const msg = buildCartMessage([
     { id: product.id, name: product.name, price: product.price, qty: 1 }
   ]);
+
   drawerBuyNow.href = getWhatsLink(msg);
+
+}
+
 
   productDrawer.classList.add("open");
   productDrawer.setAttribute("aria-hidden", "false");
