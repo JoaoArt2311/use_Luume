@@ -19,6 +19,7 @@ const products = [
       "img/produtos/produto-1.jpeg",
     ],
     desc: "Pulseira delicada, que traz brilho sutil para o seu dia a dia. Prata 925",
+    stock: true
   },
   {
     id: 2,
@@ -28,7 +29,8 @@ const products = [
       "img/produtos/produto-2.jpeg",
     ],
     desc: "Pulseira design elegante, que une brilho e delicadeza. Prata 925",
-    imagePosition: "center 80%"
+    imagePosition: "center 80%",
+    stock: true
   },
   {
     id: 3,
@@ -39,6 +41,7 @@ const products = [
       "img/produtos/produto-3[2].jpeg",
     ],
     desc: "Pulseira com design sofisticado e torção marcante. Prata 925",
+    stock: true
   },
   {
     id: 4,
@@ -49,6 +52,7 @@ const products = [
       "img/produtos/produto-4[2].jpeg"
     ],
     desc: "Pulseira romântica, delicada e elegante. Prata 925",
+    stock: true
   },
   {
     id: 5,
@@ -60,6 +64,7 @@ const products = [
       // "img/produtos/produto-5[2].jpeg",
     ],
     desc: "Colar tendência icônica, sofisticado e elegante. Prata 925",
+    stock: false
   },
   {
     id: 6,
@@ -70,6 +75,7 @@ const products = [
       "img/produtos/produto-6[2].jpeg",
     ],
     desc: "Colar Romântico, Delicado e Excepcional para o seu ia a dia. Prata 925",
+    stock: true
   },
   {
     id: 7,
@@ -80,6 +86,7 @@ const products = [
       "img/produtos/produto-7[2].jpeg",
     ],
     desc: "Colar cravejado, marcante, estiloso e romântico. Prata 925",
+    stock: true
   },
   {
     id: 8,
@@ -89,6 +96,7 @@ const products = [
       "img/produtos/produto-8.jpeg",
     ],
     desc: "Colar design autêntico, que se destaca por sua elegância. Prata 925",
+    stock: true
   },
 
   {
@@ -100,6 +108,7 @@ const products = [
       "img/produtos/produto-9[2].jpeg",
     ],
     desc: "Colar design geométrico, moderno e marcante. Prata 925",
+    stock: true
   },
   {
     id: 10,
@@ -111,6 +120,7 @@ const products = [
       "img/produtos/produto-10[2].jpeg",
     ],
     desc: "Brinco delicado, torção marcante, tamanho ideal para impactar. Prata 925",
+    stock: false
   },
   {
     id: 11,
@@ -120,6 +130,7 @@ const products = [
       "img/produtos/produto-11.jpeg",
     ],
     desc: "Brinco delicado, torção marcante, tamanho ideal para o dia a dia. Prata 925",
+    stock: true
   },
   {
     id: 12,
@@ -129,6 +140,7 @@ const products = [
       "img/produtos/produto-12.jpeg",
     ],
     desc: "Brinco usual, delicado. Prata 925",
+    stock: true
   },
   {
     id: 13,
@@ -138,6 +150,7 @@ const products = [
       "img/produtos/produto-13.jpeg",
     ],
     desc: "Brinco usual, delicado. Prata 925",
+    stock: true
   },
   {
     id: 14,
@@ -147,6 +160,7 @@ const products = [
       "img/produtos/produto-14.jpeg",
     ],
     desc: "Brinco usual, delicado. Prata 925",
+    stock: true
   },
   {
     id: 15,
@@ -156,6 +170,7 @@ const products = [
       "img/produtos/produto-15.jpeg",
     ],
     desc: "3 brincos delicados para o dia a dia. Prata 925",
+    stock: true
   },
   {
     id: 16,
@@ -165,6 +180,7 @@ const products = [
       "img/produtos/produto-16.jpeg",
     ],
     desc: "3 brincos elegantes, e delicados. Prata 925",
+    stock: true
   },
   {
     id: 17,
@@ -174,6 +190,7 @@ const products = [
       "img/produtos/produto-17.jpeg",
     ],
     desc: "Brinco moderno e romântico. Prata 925",
+    stock: true
   },
   {
     id: 18,
@@ -183,6 +200,7 @@ const products = [
       "img/produtos/produto-18.jpeg",
     ],
     desc: "Brinco delicado e romântico. Prata 925",
+    stock: true
   },
   {
     id: 19,
@@ -192,6 +210,7 @@ const products = [
       "img/produtos/produto-19.jpeg",
     ],
     desc: "Brinco delicado e romântico. Prata 925",
+    stock: true
   },
   {
     id: 20,
@@ -201,6 +220,7 @@ const products = [
       "img/produtos/produto-20.jpeg",
     ],
     desc: "Brinco ponto de luz, minimalista. Prata 925",
+    stock: true
   },
   {
     id: 21,
@@ -210,6 +230,7 @@ const products = [
       "img/produtos/produto-21.jpeg",
     ],
     desc: "Brinco delicado, perfeito para o dia a dia. Prata 925",
+    stock: true
   },
   {
     id: 22,
@@ -220,6 +241,7 @@ const products = [
       "img/produtos/produto-22[2].jpeg",
     ],
     desc: "Brinco ponto de luz, elegante. Prata 925",
+    stock: true
   },
   {
     id: 23,
@@ -230,6 +252,7 @@ const products = [
       "img/produtos/produto-23[2].jpeg",
     ],
     desc: "Brinco ponto de luz, elegante. Prata 925",
+    stock: true
   },
   {
     id: 24,
@@ -240,6 +263,7 @@ const products = [
       "img/produtos/produto-24[2].jpeg",
     ],
     desc: "Brinco delicado e romântico. Prata 925",
+    stock: true
   },
   {
     id: 25,
@@ -250,6 +274,7 @@ const products = [
       "img/produtos/produto-25[2].jpeg",
     ],
     desc: "Piercing delicado e luxuoso. Prata 925",
+    stock: true
   },
   {
     id: 26,
@@ -260,6 +285,7 @@ const products = [
       "img/produtos/produto-26[2].jpeg",
     ],
     desc: "Piercing delicado e luxuoso. Prata 925",
+    stock: true
   },
   {
     id: 27,
@@ -270,6 +296,7 @@ const products = [
       "img/produtos/produto-27[2].jpeg",
     ],
     desc: "Colar delicado e luxuoso. Prata 925",
+    stock: true
   },
   {
     id: 28,
@@ -280,6 +307,7 @@ const products = [
       "img/produtos/produto-28[2].jpeg",
     ],
     desc: "Colar delicado e luxuoso. Prata 925",
+    stock: true
   },
   {
     id: 29,
@@ -290,6 +318,7 @@ const products = [
       "img/produtos/produto-29[2].jpeg",
     ],
     desc: "Colar delicado e luxuoso. Prata 925",
+    stock: true
   },
   {
     id: 30,
@@ -300,6 +329,7 @@ const products = [
       "img/produtos/produto-30[2].jpeg",
     ],
     desc: "Colar delicado e luxuoso. Prata 925",
+    stock: true
   },
 ];
 
@@ -557,55 +587,55 @@ function bindEvents() {
 
   const carouselTrackEl = document.getElementById("carouselTrack");
 
-if (carouselTrackEl) {
-  carouselTrackEl.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
+  if (carouselTrackEl) {
+    carouselTrackEl.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
 
-  carouselTrackEl.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
+    carouselTrackEl.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
 
-handleSwipe(
-  touchStartX,
-  touchEndX,
-  () => {
-    goCarousel(1);
-    if (typeof restartCarouselAuto === "function") restartCarouselAuto();
-  },
-  () => {
-    goCarousel(-1);
-    if (typeof restartCarouselAuto === "function") restartCarouselAuto();
+      handleSwipe(
+        touchStartX,
+        touchEndX,
+        () => {
+          goCarousel(1);
+          if (typeof restartCarouselAuto === "function") restartCarouselAuto();
+        },
+        () => {
+          goCarousel(-1);
+          if (typeof restartCarouselAuto === "function") restartCarouselAuto();
+        }
+      );
+    }, { passive: true });
   }
-);
-  }, { passive: true });
-}
 
-if (drawerImage) {
-  drawerImage.addEventListener("touchstart", (e) => {
-    drawerTouchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
+  if (drawerImage) {
+    drawerImage.addEventListener("touchstart", (e) => {
+      drawerTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
 
-  drawerImage.addEventListener("touchend", (e) => {
-    drawerTouchEndX = e.changedTouches[0].screenX;
+    drawerImage.addEventListener("touchend", (e) => {
+      drawerTouchEndX = e.changedTouches[0].screenX;
 
-    if (!drawerSelectedProduct?.images?.length) return;
+      if (!drawerSelectedProduct?.images?.length) return;
 
-    handleSwipe(
-      drawerTouchStartX,
-      drawerTouchEndX,
-      () => {
-        const total = drawerSelectedProduct.images.length;
-        drawerImageIndex = (drawerImageIndex + 1) % total;
-        updateDrawerImage();
-      },
-      () => {
-        const total = drawerSelectedProduct.images.length;
-        drawerImageIndex = (drawerImageIndex - 1 + total) % total;
-        updateDrawerImage();
-      }
-    );
-  }, { passive: true });
-}
+      handleSwipe(
+        drawerTouchStartX,
+        drawerTouchEndX,
+        () => {
+          const total = drawerSelectedProduct.images.length;
+          drawerImageIndex = (drawerImageIndex + 1) % total;
+          updateDrawerImage();
+        },
+        () => {
+          const total = drawerSelectedProduct.images.length;
+          drawerImageIndex = (drawerImageIndex - 1 + total) % total;
+          updateDrawerImage();
+        }
+      );
+    }, { passive: true });
+  }
 
   // limpar carrinho
   cartClear.addEventListener("click", () => {
@@ -663,7 +693,11 @@ function renderProducts() {
         <p class="product-price">${formatBRL(p.price)}</p>
         <div class="product-actions">
           <button class="btn btn-light" data-action="details">Ver detalhes</button>
-          <button class="btn btn-primary" data-action="add">Adicionar</button>
+${p.stock === false
+        ? `<button class="btn btn-out" type="button" disabled>Esgotado</button>`
+        : `<button class="btn btn-primary" data-action="add">Adicionar</button>`
+      }
+
         </div>
       </div>
     `;
@@ -698,10 +732,18 @@ function openDrawer(product) {
 
   updateDrawerImage();
 
-  drawerAddToCart.onclick = () => {
-    addToCart(product.id);
-    toggleCart(true);
-  };
+  if (product.stock === false) {
+    drawerAddToCart.textContent = "Esgotado";
+    drawerAddToCart.disabled = true;
+    drawerAddToCart.onclick = null;
+  } else {
+    drawerAddToCart.textContent = "Adicionar ao carrinho";
+    drawerAddToCart.disabled = false;
+    drawerAddToCart.onclick = () => {
+      addToCart(product.id);
+      toggleCart(true);
+    };
+  }
 
   const msg = buildCartMessage([
     { id: product.id, name: product.name, price: product.price, qty: 1 }
@@ -718,11 +760,11 @@ function openDrawer(product) {
   document.body.style.overflow = "hidden";
 }
 
-function updateDrawerImage(){
+function updateDrawerImage() {
   if (!drawerSelectedProduct) return;
 
   const images = drawerSelectedProduct.images || [];
-  if (!images.length){
+  if (!images.length) {
     drawerImage.src = "assets/p1.jpg";
     drawerImage.alt = drawerSelectedProduct.name;
     drawerThumbs.innerHTML = "";

@@ -441,6 +441,22 @@ a span {
   -webkit-tap-highlight-color: transparent;
 }
 
+.btn-out{
+  background: rgba(0,0,0,.08);
+  color: rgba(58,47,40,.55);
+  border: 1px dashed var(--border);
+  cursor: not-allowed;
+  opacity: .9;
+}
+
+#drawerAddToCart:disabled{
+  background: rgba(0,0,0,.08);
+  color: rgba(58,47,40,.55);
+  border: 1px dashed var(--border);
+  box-shadow: none;
+}
+
+
 .btn-primary {
   background: var(--bg-2);
   color: var(--text) !important;
