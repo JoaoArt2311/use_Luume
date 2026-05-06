@@ -2,6 +2,16 @@
 <html lang="pt-br">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG9M8CSSK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-LKG9M8CSSK');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Use Luume</title>
@@ -54,7 +64,8 @@
 
         <!-- Botão carrinho -->
         <button class="cart-btn" id="cartBtn" aria-label="Abrir carrinho">
-          <span class="cart-icon" aria-hidden="true">🛒</span>
+          <span class="cart-icon" aria-hidden="true"><img src="img/vista-lateral-vazia-do-carrinho-de-compras.png"
+              alt="Carrinho de compras"></span>
           <span class="cart-badge" id="cartCount">0</span>
         </button>
       </div>
@@ -72,9 +83,9 @@
     <!-- HERO / CARROSSEL -->
     <section class="hero container">
       <div class="carousel" aria-label="Carrossel de produtos em destaque">
-        <button class="carousel-btn prev" id="carouselPrev" aria-label="Imagem anterior">
+        <!-- <button class="carousel-btn prev" id="carouselPrev" aria-label="Imagem anterior">
           ‹
-        </button>
+        </button> -->
 
         <div class="carousel-track" id="carouselTrack">
           <!-- Troque as imagens por fotos reais dos seus produtos -->
@@ -84,9 +95,9 @@
           <!-- <img src="assets/carousel-4.jpg" alt="Produto em destaque 4" class="carousel-img" /> -->
         </div>
 
-        <button class="carousel-btn next" id="carouselNext" aria-label="Próxima imagem">
+        <!-- <button class="carousel-btn next" id="carouselNext" aria-label="Próxima imagem">
           ›
-        </button>
+        </button> -->
 
         <div class="carousel-dots" id="carouselDots" aria-label="Indicadores do carrossel">
           <!-- dots serão criados pelo JS -->
@@ -196,6 +207,16 @@
 
         <div class="cart-summary">
           <div class="cart-row">
+            <span>Subtotal</span>
+            <strong id="cartSubtotal">R$ 0,00</strong>
+          </div>
+
+          <div class="cart-row cart-row-discount" id="cartDiscountRow" hidden>
+            <span>Desconto</span>
+            <strong id="cartDiscount">-R$ 0,00</strong>
+          </div>
+
+          <div class="cart-row">
             <span>Total</span>
             <strong id="cartTotal">R$ 0,00</strong>
           </div>
@@ -203,6 +224,27 @@
           <a class="btn btn-primary cart-whats" id="cartCheckout" href="#" target="_blank" rel="noopener">
             Finalizar no WhatsApp
           </a>
+
+          <div class="coupon-box" id="couponBox">
+            <button class="coupon-toggle" id="couponToggle" type="button" aria-expanded="false"
+              aria-controls="couponPanel" style="text-align: center;">
+              Desconto
+            </button>
+
+            <div class="coupon-panel" id="couponPanel" hidden>
+              <label class="coupon-label" for="couponCode">Cupom de desconto</label>
+              <div class="coupon-form">
+                <input class="coupon-input" id="couponCode" type="text" placeholder="Ex: LUUME10" autocomplete="off" />
+                <button class="btn btn-light coupon-apply" id="couponApply" type="button">
+                  Aplicar
+                </button>
+              </div>
+              <p class="coupon-feedback" id="couponFeedback" aria-live="polite"></p>
+              <button class="coupon-remove" id="couponRemove" type="button">
+                Remover cupom
+              </button>
+            </div>
+          </div>
 
           <button class="btn btn-light" id="cartClear">
             Limpar carrinho

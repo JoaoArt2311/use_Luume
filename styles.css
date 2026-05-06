@@ -295,7 +295,7 @@ a span {
   touch-action: pan-y;
 }
 
-.carousel-btn {
+/* .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -323,7 +323,7 @@ a span {
 }
 .carousel-btn.next {
   right: 14px;
-}
+} */
 
 .carousel-dots {
   position: absolute;
@@ -855,6 +855,89 @@ a span {
   flex-direction: column;
   gap: 10px;
 }
+.coupon-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid rgba(58, 47, 40, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+}
+.coupon-toggle {
+  text-align: center;
+  width: 100%;
+  padding: 14px 16px;
+  border: 0;
+  background: transparent;
+  display: block;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+.coupon-panel {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 12px 12px;
+  border-top: 1px solid rgba(58, 47, 40, 0.08);
+}
+.coupon-box.open .coupon-panel {
+  display: flex;
+}
+.coupon-label {
+  font-size: 13px;
+  font-weight: 600;
+  padding-top: 12px;
+}
+.coupon-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+.coupon-input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.coupon-input:focus {
+  outline: 2px solid rgba(235, 216, 197, 0.8);
+  outline-offset: 1px;
+}
+.coupon-apply {
+  min-width: 92px;
+}
+.coupon-feedback {
+  min-height: 18px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+.coupon-feedback.is-success {
+  color: #2d6a4f;
+}
+.coupon-remove {
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.cart-row-discount strong {
+  color: #2d6a4f;
+}
 .cart-row {
   display: flex;
   align-items: center;
@@ -1064,5 +1147,11 @@ a span {
     right: 16px;
     left: 16px;
     width: auto;
+  }
+  .coupon-form {
+    grid-template-columns: 1fr;
+  }
+  .coupon-apply {
+    width: 100%;
   }
 }

@@ -5,7 +5,26 @@ const WHATSAPP_NUMBER = "556492020713";
 const WHATSAPP_BASE = "https://wa.me/";
 const ITEMS_PER_PAGE = 8;
 const CART_STORAGE_KEY = "useLuume_cart_v1";
+const COUPON_STORAGE_KEY = "useLuume_coupon_v1";
 const drawerOverlay = document.getElementById("drawerOverlay");
+const DISCOUNT_COUPONS = {
+  LUUME5: {
+    type: "percent",
+    value: 5,
+    label: "5% OFF",
+  },
+  // MAEUSELUUMES: {
+  //   type: "fixed",
+  //   value: 15,
+  //   label: "R$ 15 OFF",
+  //   minSubtotal: 120,
+  // },
+  MAEUSELUUMES: {
+    type: "percent",
+    value: 5,
+    label: "5% OFF",
+  },
+};
 
 // ===============================
 // PRODUTOS
@@ -26,11 +45,12 @@ const products = [
     name: "Pulseira Corações",
     price: 80,
     images: [
+      "img/produto-esgotado.png",
       "img/produtos/produto-2.jpeg",
     ],
     desc: "Pulseira design elegante, que une brilho e delicadeza. Prata 925",
     imagePosition: "center 80%",
-    stock: true
+    stock: false
   },
   {
     id: 3,
@@ -212,19 +232,19 @@ const products = [
     desc: "Brinco delicado e romântico. Prata 925",
     stock: true
   },
-  {
-    id: 20,
-    name: "Brinco Zircônia Quadrado 3mm",
-    price: 25,
-    images: [
-      "img/produtos/produto-20.jpeg",
-    ],
-    desc: "Brinco ponto de luz, minimalista. Prata 925",
-    stock: true
-  },
+  // {
+  //   id: 20,
+  //   name: "Brinco Coração Ponto de Luz",
+  //   price: 25,
+  //   images: [
+  //     "img/produtos/produto-20.jpeg",
+  //   ],
+  //   desc: "Brinco ponto de luz, minimalista. Prata 925",
+  //   stock: true
+  // },
   {
     id: 21,
-    name: "Brinco Zircônia Redondo 4mm",
+    name: "Brinco Zircônia Quadrado 3mm",
     price: 28,
     images: [
       "img/produtos/produto-21.jpeg",
@@ -234,7 +254,7 @@ const products = [
   },
   {
     id: 22,
-    name: "Brinco Zircônia Quadrado 4mm ",
+    name: "Brinco Zircônia Redondo 4mm ",
     price: 28,
     images: [
       "img/produtos/produto-22[1].jpeg",
@@ -245,7 +265,7 @@ const products = [
   },
   {
     id: 23,
-    name: "Brinco Zircônia Redondo 6mm",
+    name: "Brinco Zircônia Quadrado 4mm",
     price: 32,
     images: [
       "img/produtos/produto-23[1].jpeg",
@@ -349,10 +369,96 @@ function getWhatsLink(message) {
   return `${WHATSAPP_BASE}${number}?text=${encodeMsg(message)}`;
 }
 
+function normalizeCouponCode(code) {
+  return String(code || "").trim().toUpperCase();
+}
+
 function calcCartTotals(items) {
   const totalItems = items.reduce((acc, i) => acc + i.qty, 0);
   const totalValue = items.reduce((acc, i) => acc + i.price * i.qty, 0);
   return { totalItems, totalValue };
+}
+
+function getDiscountValue(subtotal, coupon) {
+  if (!coupon || subtotal <= 0) return 0;
+
+  if (coupon.type === "percent") {
+    return subtotal * (coupon.value / 100);
+  }
+
+  if (coupon.type === "fixed") {
+    return coupon.value;
+  }
+
+  return 0;
+}
+
+function validateCouponForCart(items, rawCode) {
+  const code = normalizeCouponCode(rawCode);
+  const subtotal = calcCartTotals(items).totalValue;
+
+  if (!code) {
+    return {
+      isValid: false,
+      code: "",
+      subtotal,
+      discount: 0,
+      total: subtotal,
+      message: "Digite um cupom para aplicar.",
+    };
+  }
+
+  const coupon = DISCOUNT_COUPONS[code];
+
+  if (!coupon) {
+    return {
+      isValid: false,
+      code,
+      subtotal,
+      discount: 0,
+      total: subtotal,
+      message: "Cupom invalido.",
+    };
+  }
+
+  if (coupon.minSubtotal && subtotal < coupon.minSubtotal) {
+    return {
+      isValid: false,
+      code,
+      coupon,
+      subtotal,
+      discount: 0,
+      total: subtotal,
+      message: `Esse cupom e valido para compras a partir de ${formatBRL(coupon.minSubtotal)}.`,
+    };
+  }
+
+  const discount = Math.min(getDiscountValue(subtotal, coupon), subtotal);
+
+  return {
+    isValid: true,
+    code,
+    coupon,
+    subtotal,
+    discount,
+    total: subtotal - discount,
+    message: `Cupom ${code} aplicado: ${coupon.label}.`,
+  };
+}
+
+function getCartPricing(items, couponCode = activeCouponCode) {
+  const { totalItems, totalValue } = calcCartTotals(items);
+  const couponState = validateCouponForCart(items, couponCode);
+
+  return {
+    totalItems,
+    subtotal: totalValue,
+    discount: couponState.isValid ? couponState.discount : 0,
+    total: couponState.isValid ? couponState.total : totalValue,
+    appliedCoupon: couponState.isValid ? couponState.coupon : null,
+    appliedCouponCode: couponState.isValid ? couponState.code : "",
+    couponState,
+  };
 }
 
 function buildCartMessage(items) {
@@ -422,6 +528,37 @@ function saveCart() {
   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
 }
 
+function loadCoupon() {
+  return normalizeCouponCode(localStorage.getItem(COUPON_STORAGE_KEY) || "");
+}
+
+function saveCoupon(code) {
+  const normalizedCode = normalizeCouponCode(code);
+
+  if (!normalizedCode) {
+    localStorage.removeItem(COUPON_STORAGE_KEY);
+    return;
+  }
+
+  localStorage.setItem(COUPON_STORAGE_KEY, normalizedCode);
+}
+
+function setCouponPanel(open) {
+  isCouponPanelOpen = Boolean(open);
+
+  if (couponBox) {
+    couponBox.classList.toggle("open", isCouponPanelOpen);
+  }
+
+  if (couponToggle) {
+    couponToggle.setAttribute("aria-expanded", String(isCouponPanelOpen));
+  }
+
+  if (couponPanel) {
+    couponPanel.hidden = !isCouponPanelOpen;
+  }
+}
+
 // ===============================
 // ELEMENTS
 // ===============================
@@ -445,9 +582,19 @@ const cartPanel = document.getElementById("cartPanel");
 const cartClose = document.getElementById("cartClose");
 const cartItemsEl = document.getElementById("cartItems");
 const cartCount = document.getElementById("cartCount");
+const cartSubtotalEl = document.getElementById("cartSubtotal");
+const cartDiscountRow = document.getElementById("cartDiscountRow");
+const cartDiscountEl = document.getElementById("cartDiscount");
 const cartTotalEl = document.getElementById("cartTotal");
 const cartCheckout = document.getElementById("cartCheckout");
 const cartClear = document.getElementById("cartClear");
+const couponBox = document.getElementById("couponBox");
+const couponToggle = document.getElementById("couponToggle");
+const couponPanel = document.getElementById("couponPanel");
+const couponCodeInput = document.getElementById("couponCode");
+const couponApplyBtn = document.getElementById("couponApply");
+const couponFeedback = document.getElementById("couponFeedback");
+const couponRemoveBtn = document.getElementById("couponRemove");
 
 const pagePrev = document.getElementById("pagePrev");
 const pageNext = document.getElementById("pageNext");
@@ -472,6 +619,8 @@ let cart = [];
 let currentPage = 1;
 let drawerSelectedProduct = null;
 let drawerImageIndex = 0;
+let activeCouponCode = "";
+let isCouponPanelOpen = false;
 
 let carouselIndex = 0;
 let carouselTimer = null;
@@ -490,6 +639,12 @@ function init() {
 
   // carrinho persistente
   cart = loadCart();
+  activeCouponCode = loadCoupon();
+  setCouponPanel(false);
+
+  if (couponCodeInput) {
+    couponCodeInput.value = activeCouponCode;
+  }
 
   // link contato whatsapp
   if (contactWhats) {
@@ -640,13 +795,48 @@ function bindEvents() {
   // limpar carrinho
   cartClear.addEventListener("click", () => {
     cart = [];
+    activeCouponCode = "";
     saveCart();
+    saveCoupon("");
+    setCouponPanel(false);
     renderCart();
   });
 
+  if (couponApplyBtn) {
+    couponApplyBtn.addEventListener("click", applyCoupon);
+  }
+
+  if (couponToggle) {
+    couponToggle.addEventListener("click", () => {
+      setCouponPanel(!isCouponPanelOpen);
+    });
+  }
+
+  if (couponCodeInput) {
+    couponCodeInput.addEventListener("input", () => {
+      couponCodeInput.value = normalizeCouponCode(couponCodeInput.value);
+    });
+
+    couponCodeInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        applyCoupon();
+      }
+    });
+  }
+
+  if (couponRemoveBtn) {
+    couponRemoveBtn.addEventListener("click", removeCoupon);
+  }
+
   // carousel
-  carouselPrev.addEventListener("click", () => goCarousel(-1));
-  carouselNext.addEventListener("click", () => goCarousel(1));
+  if (carouselPrev) {
+    carouselPrev.addEventListener("click", () => goCarousel(-1));
+  }
+
+  if (carouselNext) {
+    carouselNext.addEventListener("click", () => goCarousel(1));
+  }
 }
 
 // ===============================
@@ -727,7 +917,14 @@ function openDrawer(product) {
   drawerImageIndex = 0;
 
   drawerTitle.textContent = product.name;
-  drawerPrice.textContent = formatBRL(product.price);
+  const drawerPricing = getCartPricing(
+    [{ id: product.id, name: product.name, price: product.price, qty: 1 }],
+    activeCouponCode,
+  );
+  drawerPrice.textContent =
+    drawerPricing.discount > 0
+      ? `${formatBRL(drawerPricing.total)} (com cupom)`
+      : formatBRL(product.price);
   drawerDesc.textContent = product.desc;
 
   updateDrawerImage();
@@ -745,25 +942,26 @@ function openDrawer(product) {
     };
   }
 
-if (product.stock === false) {
+  if (product.stock === false) {
 
-  drawerBuyNow.textContent = "Consultar previsão";
+    drawerBuyNow.textContent = "Consultar previsão";
 
-  const msg = `Olá! Tenho interesse no produto "${product.name}", mas vi no site que ele está esgotado. Poderia me informar a previsão de chegada?`;
+    const msg = `Olá! Tenho interesse no produto "${product.name}", mas vi no site que ele está esgotado. Poderia me informar a previsão de chegada?`;
 
-  drawerBuyNow.href = getWhatsLink(msg);
+    drawerBuyNow.href = getWhatsLink(msg);
 
-} else {
+  } else {
 
-  drawerBuyNow.textContent = "Comprar no WhatsApp";
+    drawerBuyNow.textContent = "Comprar no WhatsApp";
 
-  const msg = buildCartMessage([
-    { id: product.id, name: product.name, price: product.price, qty: 1 }
-  ]);
+    const singleItem = [
+      { id: product.id, name: product.name, price: product.price, qty: 1 }
+    ];
+    const msg = buildCartMessage(singleItem, getCartPricing(singleItem));
 
-  drawerBuyNow.href = getWhatsLink(msg);
+    drawerBuyNow.href = getWhatsLink(msg);
 
-}
+  }
 
 
   productDrawer.classList.add("open");
@@ -919,6 +1117,161 @@ function renderCart() {
 // ===============================
 // CAROUSEL
 // ===============================
+function buildCartMessage(items, pricing) {
+  let lines = ["Ol\u00e1! Quero comprar os seguintes itens da Use Luume:", ""];
+
+  items.forEach((item) => {
+    const subtotal = item.price * item.qty;
+    lines.push(`\u2022 ${item.name} (x${item.qty}) - ${formatBRL(subtotal)}`);
+  });
+
+  lines.push("");
+  lines.push(`Subtotal: ${formatBRL(pricing.subtotal)}`);
+
+  if (pricing.discount > 0 && pricing.appliedCouponCode) {
+    lines.push(`Cupom ${pricing.appliedCouponCode}: -${formatBRL(pricing.discount)}`);
+  }
+
+  lines.push(`Total: ${formatBRL(pricing.total)}`);
+  lines.push("");
+  lines.push("Pode confirmar disponibilidade e formas de pagamento?");
+
+  return lines.join("\n");
+}
+
+function applyCoupon() {
+  if (!couponCodeInput) return;
+
+  const attemptedCode = normalizeCouponCode(couponCodeInput.value);
+  const validation = validateCouponForCart(cart, attemptedCode);
+
+  if (!attemptedCode) {
+    activeCouponCode = "";
+    saveCoupon("");
+    couponFeedback.textContent = validation.message;
+    couponFeedback.classList.remove("is-success");
+    couponRemoveBtn.hidden = true;
+    renderCart();
+    return;
+  }
+
+  if (!validation.isValid) {
+    activeCouponCode = "";
+    saveCoupon("");
+    couponFeedback.textContent = validation.message;
+    couponFeedback.classList.remove("is-success");
+    couponRemoveBtn.hidden = true;
+    renderCart();
+    return;
+  }
+
+  activeCouponCode = validation.code;
+  saveCoupon(activeCouponCode);
+  couponCodeInput.value = activeCouponCode;
+  renderCart();
+}
+
+function removeCoupon() {
+  activeCouponCode = "";
+  saveCoupon("");
+  setCouponPanel(false);
+
+  if (couponCodeInput) {
+    couponCodeInput.value = "";
+  }
+
+  couponFeedback.textContent = "Cupom removido.";
+  couponFeedback.classList.remove("is-success");
+  couponRemoveBtn.hidden = true;
+  renderCart();
+}
+
+function renderCart() {
+  const pricing = getCartPricing(cart);
+  const {
+    totalItems,
+    subtotal,
+    discount,
+    total,
+    couponState,
+    appliedCouponCode,
+  } = pricing;
+
+  cartCount.textContent = String(totalItems);
+
+  if (couponCodeInput && document.activeElement !== couponCodeInput) {
+    couponCodeInput.value = activeCouponCode;
+  }
+
+  cartItemsEl.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItemsEl.innerHTML = `<p style="margin:0;color:rgba(58,47,40,.75);font-size:13px;">Seu carrinho está vazio.</p>`;
+    cartSubtotalEl.textContent = formatBRL(0);
+    cartDiscountRow.hidden = true;
+    cartTotalEl.textContent = formatBRL(0);
+    couponFeedback.textContent = activeCouponCode
+      ? "Adicione itens ao carrinho para usar o cupom."
+      : "";
+    couponFeedback.classList.remove("is-success");
+    couponRemoveBtn.hidden = !activeCouponCode;
+    cartCheckout.href = getWhatsLink("Olá gostaria de saber algumas informções !");
+    return;
+  }
+
+  if (activeCouponCode && !couponState.isValid) {
+    activeCouponCode = "";
+    saveCoupon("");
+    setCouponPanel(false);
+    if (couponCodeInput) couponCodeInput.value = "";
+    renderCart();
+    return;
+  }
+
+  cart.forEach((item) => {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+
+    row.innerHTML = `
+      <div>
+        <strong>${item.name}</strong><br/>
+        <small>${formatBRL(item.price)} cada</small>
+      </div>
+
+      <div class="cart-item-actions">
+        <button class="qty-btn" aria-label="Diminuir">-</button>
+        <span class="qty">${item.qty}</span>
+        <button class="qty-btn" aria-label="Aumentar">+</button>
+        <button class="remove-btn" aria-label="Remover item"><img src="img/lixeira-de-reciclagem.png"
+              alt="Carrinho de compras"></button>
+      </div>
+    `;
+
+    const btns = row.querySelectorAll("button");
+    const minus = btns[0];
+    const plus = btns[1];
+    const remove = btns[2];
+
+    minus.addEventListener("click", () => changeQty(item.id, -1));
+    plus.addEventListener("click", () => changeQty(item.id, +1));
+    remove.addEventListener("click", () => removeFromCart(item.id));
+
+    cartItemsEl.appendChild(row);
+  });
+
+  cartSubtotalEl.textContent = formatBRL(subtotal);
+  cartDiscountRow.hidden = discount <= 0;
+  cartDiscountEl.textContent = `-${formatBRL(discount)}`;
+  cartTotalEl.textContent = formatBRL(total);
+
+  couponFeedback.textContent = appliedCouponCode ? couponState.message : "";
+  couponFeedback.classList.toggle("is-success", Boolean(appliedCouponCode));
+  couponRemoveBtn.hidden = !appliedCouponCode;
+
+  const msg = buildCartMessage(cart, pricing);
+  cartCheckout.href = getWhatsLink(msg);
+}
+
 function initCarousel() {
   if (!carouselImgs.length) return;
 
