@@ -34,23 +34,18 @@ const products = [
     id: 1,
     name: "Pulseira de Borboleta Cravejada",
     price: 70,
-    images: [
-      "img/produtos/produto-1.jpeg",
-    ],
+    images: ["img/produtos/produto-1.jpeg"],
     desc: "Pulseira delicada, que traz brilho sutil para o seu dia a dia. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 2,
     name: "Pulseira Corações",
     price: 80,
-    images: [
-      "img/produto-esgotado.png",
-      "img/produtos/produto-2.jpeg",
-    ],
+    images: ["img/produto-esgotado.png", "img/produtos/produto-2.jpeg"],
     desc: "Pulseira design elegante, que une brilho e delicadeza. Prata 925",
     imagePosition: "center 80%",
-    stock: false
+    stock: false,
   },
   {
     id: 3,
@@ -61,7 +56,7 @@ const products = [
       "img/produtos/produto-3[2].jpeg",
     ],
     desc: "Pulseira com design sofisticado e torção marcante. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 4,
@@ -69,10 +64,10 @@ const products = [
     price: 45,
     images: [
       "img/produtos/produto-4[1].jpeg",
-      "img/produtos/produto-4[2].jpeg"
+      "img/produtos/produto-4[2].jpeg",
     ],
     desc: "Pulseira romântica, delicada e elegante. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 5,
@@ -84,7 +79,7 @@ const products = [
       // "img/produtos/produto-5[2].jpeg",
     ],
     desc: "Colar tendência icônica, sofisticado e elegante. Prata 925",
-    stock: false
+    stock: false,
   },
   {
     id: 6,
@@ -95,28 +90,27 @@ const products = [
       "img/produtos/produto-6[2].jpeg",
     ],
     desc: "Colar Romântico, Delicado e Excepcional para o seu ia a dia. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 7,
     name: "Colar Coração Cravejado",
     price: 120,
     images: [
+      "img/produto-esgotado.png",
       "img/produtos/produto-7[1].jpeg",
       "img/produtos/produto-7[2].jpeg",
     ],
     desc: "Colar cravejado, marcante, estiloso e romântico. Prata 925",
-    stock: true
+    stock: false,
   },
   {
     id: 8,
     name: "Colar Borboleta Origame",
     price: 80,
-    images: [
-      "img/produtos/produto-8.jpeg",
-    ],
+    images: ["img/produtos/produto-8.jpeg"],
     desc: "Colar design autêntico, que se destaca por sua elegância. Prata 925",
-    stock: true
+    stock: true,
   },
 
   {
@@ -128,7 +122,7 @@ const products = [
       "img/produtos/produto-9[2].jpeg",
     ],
     desc: "Colar design geométrico, moderno e marcante. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 10,
@@ -140,97 +134,79 @@ const products = [
       "img/produtos/produto-10[2].jpeg",
     ],
     desc: "Brinco delicado, torção marcante, tamanho ideal para impactar. Prata 925",
-    stock: false
+    stock: false,
   },
   {
     id: 11,
     name: "Brinco Coração",
     price: 32,
-    images: [
-      "img/produtos/produto-11.jpeg",
-    ],
+    images: ["img/produtos/produto-11.jpeg"],
     desc: "Brinco delicado, torção marcante, tamanho ideal para o dia a dia. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 12,
     name: "Brinco Argola Pequena",
     price: 30,
-    images: [
-      "img/produtos/produto-12.jpeg",
-    ],
+    images: ["img/produtos/produto-12.jpeg"],
     desc: "Brinco usual, delicado. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 13,
     name: "Brinco Argola Média",
     price: 40,
-    images: [
-      "img/produtos/produto-13.jpeg",
-    ],
+    images: ["img/produtos/produto-13.jpeg"],
     desc: "Brinco usual, delicado. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 14,
     name: "Brinco Argola Grande",
     price: 45,
-    images: [
-      "img/produtos/produto-14.jpeg",
-    ],
+    images: ["img/produtos/produto-14.jpeg"],
     desc: "Brinco usual, delicado. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 15,
     name: "Brinco Trio",
     price: 45,
-    images: [
-      "img/produtos/produto-15.jpeg",
-    ],
+    images: ["img/produto-esgotado.png", "img/produtos/produto-15.jpeg"],
     desc: "3 brincos delicados para o dia a dia. Prata 925",
-    stock: true
+    stock: false,
   },
   {
     id: 16,
     name: "Brinco Trio Strass",
     price: 60,
-    images: [
-      "img/produtos/produto-16.jpeg",
-    ],
+    images: ["img/produtos/produto-16.jpeg"],
     desc: "3 brincos elegantes, e delicados. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 17,
     name: "Brinco Coração Vermelho ",
     price: 25,
-    images: [
-      "img/produtos/produto-17.jpeg",
-    ],
+    images: ["img/produtos/produto-17.jpeg"],
     desc: "Brinco moderno e romântico. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 18,
     name: "Brinco Coração Rosa",
     price: 25,
-    images: [
-      "img/produtos/produto-18.jpeg",
-    ],
+    images: ["img/produtos/produto-18.jpeg"],
     desc: "Brinco delicado e romântico. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 19,
     name: "Brinco Coração Ponto de Luz",
     price: 25,
-    images: [
-      "img/produtos/produto-19.jpeg",
-    ],
+    images: ["img/produtos/produto-19.jpeg"],
     desc: "Brinco delicado e romântico. Prata 925",
-    stock: true
+    stock: true,
   },
   // {
   //   id: 20,
@@ -246,11 +222,9 @@ const products = [
     id: 21,
     name: "Brinco Zircônia Quadrado 3mm",
     price: 28,
-    images: [
-      "img/produtos/produto-21.jpeg",
-    ],
+    images: ["img/produtos/produto-21.jpeg"],
     desc: "Brinco delicado, perfeito para o dia a dia. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 22,
@@ -261,7 +235,7 @@ const products = [
       "img/produtos/produto-22[2].jpeg",
     ],
     desc: "Brinco ponto de luz, elegante. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 23,
@@ -272,7 +246,7 @@ const products = [
       "img/produtos/produto-23[2].jpeg",
     ],
     desc: "Brinco ponto de luz, elegante. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 24,
@@ -283,7 +257,7 @@ const products = [
       "img/produtos/produto-24[2].jpeg",
     ],
     desc: "Brinco delicado e romântico. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 25,
@@ -294,7 +268,7 @@ const products = [
       "img/produtos/produto-25[2].jpeg",
     ],
     desc: "Piercing delicado e luxuoso. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 26,
@@ -305,7 +279,7 @@ const products = [
       "img/produtos/produto-26[2].jpeg",
     ],
     desc: "Piercing delicado e luxuoso. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 27,
@@ -316,7 +290,7 @@ const products = [
       "img/produtos/produto-27[2].jpeg",
     ],
     desc: "Colar delicado e luxuoso. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 28,
@@ -327,7 +301,7 @@ const products = [
       "img/produtos/produto-28[2].jpeg",
     ],
     desc: "Colar delicado e luxuoso. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 29,
@@ -338,7 +312,7 @@ const products = [
       "img/produtos/produto-29[2].jpeg",
     ],
     desc: "Colar delicado e luxuoso. Prata 925",
-    stock: true
+    stock: true,
   },
   {
     id: 30,
@@ -349,7 +323,29 @@ const products = [
       "img/produtos/produto-30[2].jpeg",
     ],
     desc: "Colar delicado e luxuoso. Prata 925",
-    stock: true
+    stock: true,
+  },
+  {
+    id: 31,
+    name: "Argola de Coração Cravejado",
+    price: 52,
+    images: [
+      "img/produtos/produto-31[1].jpeg",
+      "img/produtos/produto-31[2].jpeg",
+    ],
+    desc: "Argola delicada e luxuosa. Prata 925",
+    stock: true,
+  },
+  {
+    id: 32,
+    name: "Argola Cravejada",
+    price: 48,
+    images: [
+      "img/produtos/produto-32[2].jpeg",
+      "img/produtos/produto-32[1].jpeg",
+    ],
+    desc: "Argola delicada e luxuosa. Prata 925",
+    stock: true,
   },
 ];
 
@@ -370,7 +366,9 @@ function getWhatsLink(message) {
 }
 
 function normalizeCouponCode(code) {
-  return String(code || "").trim().toUpperCase();
+  return String(code || "")
+    .trim()
+    .toUpperCase();
 }
 
 function calcCartTotals(items) {
@@ -743,53 +741,71 @@ function bindEvents() {
   const carouselTrackEl = document.getElementById("carouselTrack");
 
   if (carouselTrackEl) {
-    carouselTrackEl.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
+    carouselTrackEl.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true },
+    );
 
-    carouselTrackEl.addEventListener("touchend", (e) => {
-      touchEndX = e.changedTouches[0].screenX;
+    carouselTrackEl.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
 
-      handleSwipe(
-        touchStartX,
-        touchEndX,
-        () => {
-          goCarousel(1);
-          if (typeof restartCarouselAuto === "function") restartCarouselAuto();
-        },
-        () => {
-          goCarousel(-1);
-          if (typeof restartCarouselAuto === "function") restartCarouselAuto();
-        }
-      );
-    }, { passive: true });
+        handleSwipe(
+          touchStartX,
+          touchEndX,
+          () => {
+            goCarousel(1);
+            if (typeof restartCarouselAuto === "function")
+              restartCarouselAuto();
+          },
+          () => {
+            goCarousel(-1);
+            if (typeof restartCarouselAuto === "function")
+              restartCarouselAuto();
+          },
+        );
+      },
+      { passive: true },
+    );
   }
 
   if (drawerImage) {
-    drawerImage.addEventListener("touchstart", (e) => {
-      drawerTouchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
+    drawerImage.addEventListener(
+      "touchstart",
+      (e) => {
+        drawerTouchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true },
+    );
 
-    drawerImage.addEventListener("touchend", (e) => {
-      drawerTouchEndX = e.changedTouches[0].screenX;
+    drawerImage.addEventListener(
+      "touchend",
+      (e) => {
+        drawerTouchEndX = e.changedTouches[0].screenX;
 
-      if (!drawerSelectedProduct?.images?.length) return;
+        if (!drawerSelectedProduct?.images?.length) return;
 
-      handleSwipe(
-        drawerTouchStartX,
-        drawerTouchEndX,
-        () => {
-          const total = drawerSelectedProduct.images.length;
-          drawerImageIndex = (drawerImageIndex + 1) % total;
-          updateDrawerImage();
-        },
-        () => {
-          const total = drawerSelectedProduct.images.length;
-          drawerImageIndex = (drawerImageIndex - 1 + total) % total;
-          updateDrawerImage();
-        }
-      );
-    }, { passive: true });
+        handleSwipe(
+          drawerTouchStartX,
+          drawerTouchEndX,
+          () => {
+            const total = drawerSelectedProduct.images.length;
+            drawerImageIndex = (drawerImageIndex + 1) % total;
+            updateDrawerImage();
+          },
+          () => {
+            const total = drawerSelectedProduct.images.length;
+            drawerImageIndex = (drawerImageIndex - 1 + total) % total;
+            updateDrawerImage();
+          },
+        );
+      },
+      { passive: true },
+    );
   }
 
   // limpar carrinho
@@ -883,10 +899,11 @@ function renderProducts() {
         <p class="product-price">${formatBRL(p.price)}</p>
         <div class="product-actions">
           <button class="btn btn-light" data-action="details">Ver detalhes</button>
-${p.stock === false
-        ? `<button class="btn btn-out" type="button" disabled>Esgotado</button>`
-        : `<button class="btn btn-primary" data-action="add">Adicionar</button>`
-      }
+${
+  p.stock === false
+    ? `<button class="btn btn-out" type="button" disabled>Esgotado</button>`
+    : `<button class="btn btn-primary" data-action="add">Adicionar</button>`
+}
 
         </div>
       </div>
@@ -943,26 +960,21 @@ function openDrawer(product) {
   }
 
   if (product.stock === false) {
-
     drawerBuyNow.textContent = "Consultar previsão";
 
     const msg = `Olá! Tenho interesse no produto "${product.name}", mas vi no site que ele está esgotado. Poderia me informar a previsão de chegada?`;
 
     drawerBuyNow.href = getWhatsLink(msg);
-
   } else {
-
     drawerBuyNow.textContent = "Comprar no WhatsApp";
 
     const singleItem = [
-      { id: product.id, name: product.name, price: product.price, qty: 1 }
+      { id: product.id, name: product.name, price: product.price, qty: 1 },
     ];
     const msg = buildCartMessage(singleItem, getCartPricing(singleItem));
 
     drawerBuyNow.href = getWhatsLink(msg);
-
   }
-
 
   productDrawer.classList.add("open");
   productDrawer.setAttribute("aria-hidden", "false");
@@ -987,7 +999,8 @@ function updateDrawerImage() {
 
   drawerImage.src = images[drawerImageIndex];
   drawerImage.alt = `${drawerSelectedProduct.name} - imagem ${drawerImageIndex + 1}`;
-  drawerImage.style.objectPosition = drawerSelectedProduct.imagePosition || "center center";
+  drawerImage.style.objectPosition =
+    drawerSelectedProduct.imagePosition || "center center";
 
   drawerThumbs.innerHTML = "";
 
@@ -995,7 +1008,8 @@ function updateDrawerImage() {
     const thumb = document.createElement("img");
     thumb.src = img;
     thumb.alt = `${drawerSelectedProduct.name} miniatura ${index + 1}`;
-    thumb.className = "drawer-thumb" + (index === drawerImageIndex ? " active" : "");
+    thumb.className =
+      "drawer-thumb" + (index === drawerImageIndex ? " active" : "");
     thumb.addEventListener("click", () => {
       drawerImageIndex = index;
       updateDrawerImage();
@@ -1129,7 +1143,9 @@ function buildCartMessage(items, pricing) {
   lines.push(`Subtotal: ${formatBRL(pricing.subtotal)}`);
 
   if (pricing.discount > 0 && pricing.appliedCouponCode) {
-    lines.push(`Cupom ${pricing.appliedCouponCode}: -${formatBRL(pricing.discount)}`);
+    lines.push(
+      `Cupom ${pricing.appliedCouponCode}: -${formatBRL(pricing.discount)}`,
+    );
   }
 
   lines.push(`Total: ${formatBRL(pricing.total)}`);
@@ -1215,7 +1231,9 @@ function renderCart() {
       : "";
     couponFeedback.classList.remove("is-success");
     couponRemoveBtn.hidden = !activeCouponCode;
-    cartCheckout.href = getWhatsLink("Olá gostaria de saber algumas informções !");
+    cartCheckout.href = getWhatsLink(
+      "Olá gostaria de saber algumas informções !",
+    );
     return;
   }
 
